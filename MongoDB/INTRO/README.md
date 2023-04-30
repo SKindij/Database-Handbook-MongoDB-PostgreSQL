@@ -64,17 +64,17 @@
 
 ## 📖 Basic CRUD Operations
 + Create: 
-* To create a new document in a collection, you can use the ``insertOne()`` method.
-* You can also use the ``insertMany()`` method to insert multiple documents at once.
+  * To create a new document in a collection, you can use the ``insertOne()`` method.
+  * You can also use the ``insertMany()`` method to insert multiple documents at once.
 + Read: 
-* To retrieve documents from a collection, you can use the ``find()`` method. 
-* For example: ``db.users.find()``.
-* You can also use the ``findOne()`` method to retrieve a single document that matches a specific query.
+  * To retrieve documents from a collection, you can use the ``find()`` method. 
+  * For example: ``db.users.find()``.
+  * You can also use the ``findOne()`` method to retrieve a single document that matches a specific query.
 + Update: 
-* To update a document in a collection, you can use the ``updateOne()`` or ``updateMany()`` method. 
-* For example: ``db.users.updateOne({ name: "John Doe" }, { $set: { age: 31 } })``.
+  * To update a document in a collection, you can use the ``updateOne()`` or ``updateMany()`` method. 
+  * For example: ``db.users.updateOne({ name: "John Doe" }, { $set: { age: 31 } })``.
 + Delete: 
-* To delete a document from a collection, you can use the ``deleteOne()`` or ``deleteMany()`` method.
-* For example: ``db.users.deleteOne({ name: "John Doe" })``.
+  * To delete a document from a collection, you can use the ``deleteOne()`` or ``deleteMany()`` method.
+  * For example: ``db.users.deleteOne({ name: "John Doe" })``.
 
 As you become more familiar with the database, you can explore more advanced features such as aggregation, indexing, and sharding.
