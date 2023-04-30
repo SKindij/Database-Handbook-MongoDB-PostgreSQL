@@ -16,19 +16,35 @@ MongoDB is a popular **NoSQL database** that stores data in JSON-like documents.
   + Setting up a MongoDB environment
   + Basic CRUD Operations
 * 📖 [Data Modeling](https://github.com/SKindij/Database-Handbook/tree/main/MongoDB/INTRO#modeling)
+  + What is MongoDB Atlas?
 
-## 📚 Creating a database and collections
-* 📖 Inserting documents
-* 📖 Querying documents
-* 📖 Updating documents
-* 📖 Deleting documents
-* 📖 Indexing
+## 📚 MongoDB Basics
+* 📖 [Data Model](https://github.com/SKindij/Database-Handbook/tree/main/MongoDB/BASICS#basics)
+  + BSON vs JSON
+  + Data Types
+  + Embedded Documents and Arrays
+* 📖 [Collections and Methods](https://github.com/SKindij/Database-Handbook/tree/main/MongoDB/BASICS#colometh)
+  + Creating database and collections
+  + Counting Documents
+  + validate()
+* 📖 [Useful Concepts](https://github.com/SKindij/Database-Handbook/tree/main/MongoDB/BASICS#concepts)
+  + Read / Write Concerns
+  + Cursors
+  + Retryable Reads / Writes
+* 📖 [Query Operators](https://github.com/SKindij/Database-Handbook/tree/main/MongoDB/BASICS#operators)
+  + Comparison Operators
+  + Logical Operators
+  + Element Operators
+  + Evaluation Operators
+  + Array Operators
+  + Bitwise Operators
+
 
 ## 📚 What is indexing?
 * 📖 Creating indexes
 * 📖 Index types
 * 📖 Using indexes to improve query performance
-* 📖 Aggregation
+
 
 ## 📚 What is aggregation?
 * 📖 Aggregation pipeline stages
