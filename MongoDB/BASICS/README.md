@@ -25,4 +25,51 @@ Understanding these data types is essential as they play a crucial role in schem
 
 
 
+### Creating database and collections
+
+
+### Counting Documents
+
+
+
+### validate()
+
+
+
+## <a name="concepts"></a>📖 Useful Concepts
+
+### Read / Write Concerns
+
+
+### Cursors
+
+
+### Retryable Reads / Writes
+
+
+
+## <a name="operators"></a>📖 Query Operators
+
+### Comparison Operators
+
+
+### Logical Operators
+
+
+### Element Operators
+
+
+### Evaluation Operators
+
+
+### Array Operators
+
+
+### Bitwise Operators
+
+
+
+
+
+
 
