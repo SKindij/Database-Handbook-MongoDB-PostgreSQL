@@ -1,6 +1,6 @@
 # 📚 Introduction to MongoDB
 
-## 📖 What is MongoDB?
+## <a name="basics"></a>📖 What is MongoDB?
 &ensp; It is a NoSQL (non-relational) document-oriented database. It was first released in 2009 and is developed by MongoDB Inc. MongoDB stores data in flexible, JSON-like documents, which makes it easy to store and retrieve data. It is used by many large organizations, such as Cisco, eBay, and SAP.\
 &ensp; It is designed to be scalable and flexible, making it a popular choice for handling large amounts of data. It also supports many features, such as indexing, replication, and sharding, which make it a robust database solution.\
 &ensp; One of the unique features of MongoDB is its ability to store data in a flexible schema. Unlike traditional relational databases, MongoDB does not enforce a rigid schema, which means you can add or remove fields to a document as needed. This makes it easier to work with data that may not have a fixed structure.
@@ -77,4 +77,13 @@
   * To delete a document from a collection, you can use the ``deleteOne()`` or ``deleteMany()`` method.
   * For example: ``db.users.deleteOne({ name: "John Doe" })``.
 
-As you become more familiar with the database, you can explore more advanced features such as aggregation, indexing, and sharding.
+> _As you become more familiar with the database, you can explore more advanced features such as aggregation, indexing, and sharding._
+
+## <a name="modelind"></a>📖 Data Modeling
+MongoDB’s flexible schema allows for various data modeling techniques, including:
++ Embedded Documents: 
+  * Store related data together in a single document, which is suitable for one-to-one or one-to-few relationships.
++ Normalization: 
+  * Store related data in separate documents with references between them, suitable for one-to-many or many-to-many relationships.
++ Hybrid Approach: 
+  * Combine embedded documents and normalization to balance performance and storage needs.
