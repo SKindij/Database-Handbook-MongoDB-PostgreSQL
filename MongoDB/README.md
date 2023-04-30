@@ -10,11 +10,12 @@ MongoDB is a popular **NoSQL database** that stores data in JSON-like documents.
 
 ## 📚 Introduction to MongoDB
 * 📖 [What is MongoDB?](https://github.com/SKindij/Database-Handbook/tree/main/MongoDB/INTRO#basics)
-* 📖 Advantages of using MongoDB
-* 📖 Key concepts and terminology
-* 📖 Setting up a MongoDB environment
-* 📖 Basic CRUD Operations
-* 📖 [Data Modeling](https://github.com/SKindij/Database-Handbook/tree/main/MongoDB/INTRO#modelind)
+  + Advantages of using MongoDB
+  + When or where to use MongoDB?
+* 📖 [Key concepts and terminology](https://github.com/SKindij/Database-Handbook/tree/main/MongoDB/INTRO#terminology)
+  + Setting up a MongoDB environment
+  + Basic CRUD Operations
+* 📖 [Data Modeling](https://github.com/SKindij/Database-Handbook/tree/main/MongoDB/INTRO#modeling)
 
 ## 📚 Creating a database and collections
 * 📖 Inserting documents
