@@ -5,7 +5,7 @@
 &ensp; It is designed to be scalable and flexible, making it a popular choice for handling large amounts of data. It also supports many features, such as indexing, replication, and sharding, which make it a robust database solution.\
 &ensp; One of the unique features of MongoDB is its ability to store data in a flexible schema. Unlike traditional relational databases, MongoDB does not enforce a rigid schema, which means you can add or remove fields to a document as needed. This makes it easier to work with data that may not have a fixed structure.
 
-## 📖 Advantages of using MongoDB
+### 📖 Advantages of using MongoDB
 + It is very flexible, making it easier to work with data that may not have a fixed structure. This means that you can easily store data in a way that makes sense for your application.
 + It is designed to be scalable, which means you can easily add more servers to handle larger amounts of data. It also supports sharding, which allows you to distribute data across multiple servers.
 + Document-based data model and indexing features make it a high-performance database. It can handle large amounts of data and provide fast query response times.
@@ -13,7 +13,22 @@
 + MongoDB supports replication, which means you can have multiple copies of your data for increased availability and durability.
 + Large and active community of users and developers. There are many resources available to help you learn and use the database.
 
-## 📖 Key concepts and terminology
+### 📖 When or where to use MongoDB?
++ Large volumes of data: 
+* to storing and processing unstructured data such as images, videos, and text.
++ High write loads: 
+* for applications with high write loads, where data is constantly being added and updated.
++ Real-time analytics: 
+* for applications that need to perform complex queries and aggregations on large datasets in real-time.
++ Rapid application development: 
+* it is easy to iterate and adapt your data model as your application evolves;
+* useful in agile development environments where requirements are constantly changing.
++ Mobile and web applications: 
+* It also has built-in support for geospatial data and full-text search, which can be useful in location-based and search-driven applications.
++ Internet of Things (IoT) applications: 
+* MongoDB can capture and store data from a large number of devices and sensors, proving beneficial in IoT scenarios.
+
+## <a name="terminology"></a>📖 Key concepts and terminology
 + Documents: 
   * MongoDB stores data in documents, which are similar to JSON objects. 
   * Document is a set of key-value pairs, where each key represents a field in the document and the corresponding value represents the data stored in that field.
@@ -37,7 +52,7 @@
   * It is a specification for storing large files in MongoDB. 
   * It stores files in chunks, which are then stored as separate documents in a collection.
 
-## 📖 Setting up a MongoDB environment
+### 📖 Setting up a MongoDB environment
 + Install MongoDB: 
   * The first step in setting up a MongoDB environment is to download and install MongoDB. 
   * MongoDB provides installers for Windows, macOS, and Linux, which can be downloaded from the MongoDB website. 
@@ -62,7 +77,7 @@
   * To insert data into a MongoDB collection, you can use the ``insertOne()`` or ``insertMany()`` methods. 
   * For example: ``db.users.insertOne({ name: "John Doe", age: 30 })``.
 
-## 📖 Basic CRUD Operations
+### 📖 Basic CRUD Operations
 + Create: 
   * To create a new document in a collection, you can use the ``insertOne()`` method.
   * You can also use the ``insertMany()`` method to insert multiple documents at once.
@@ -79,7 +94,7 @@
 
 > _As you become more familiar with the database, you can explore more advanced features such as aggregation, indexing, and sharding._
 
-## <a name="modelind"></a>📖 Data Modeling
+## <a name="modeling"></a>📖 Data Modeling
 MongoDB’s flexible schema allows for various data modeling techniques, including:
 + Embedded Documents: 
   * Store related data together in a single document, which is suitable for one-to-one or one-to-few relationships.
