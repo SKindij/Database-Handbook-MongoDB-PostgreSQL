@@ -159,11 +159,75 @@ Understanding these data types is essential as they play a crucial role in schem
 
 
 ## <a name="colometh"></a>📖 Collections and Methods
-
-
+&ensp; In MongoDB, a collection is a group of related documents that are stored in a MongoDB database. Collections are analogous to tables in relational databases. Each collection in MongoDB has a unique name and can contain any number of documents.
 
 ### Creating database and collections
+1. to create certain database:
+```perl
+  use witcherWorld_db
+```
+2. to create collection in that database:\
+_you can specify maximum number of documents that collection can hold_
+```perl
+  db.createCollection(" monstersCollection", { max: 800 })
+```
+3. to insert single document into "monsters" collection:
+```perl
+  db.monsters.insertOne({ name: "Griffin", description: "Powerful creature with head and wings of an eagle and body of a lion" })
+```
+4. to insert multiple documents into "monsters" collection
+```perl
+  db.monsters.insertMany([
+    { name: "Drowner", description: "Water-dwelling creature that preys on humans and animals" },
+    { name: "Nekker", description: "Small, goblin-like creature that lives in groups and can be dangerous in large numbers" },
+    { name: "Leshen", description: "Forest-dwelling creature that can control plants and animals" }
+  ])
+```
 
+&ensp; Here are some of the most common options that developers specify when creating collections:
++ capped: 
+  * it creates a capped collection with a fixed size; 
+  * once collection reaches its maximum size, older documents will be automatically removed to make room for new ones;
++ size: 
+  * it sets the maximum size of a capped collection in bytes;
++ max: 
+  * it sets the maximum number of documents allowed in a collection;
++ validator: 
+  * it sets validation rule for documents in collection;
+  * documents that do not meet validation rule will not be inserted;
++ validationLevel: 
+  * it sets level of validation for documents in collection;
+  * possible values are "off", "strict", and "moderate";
++ validationAction: 
+  * it specifies what action to take when document fails validation;
+  * possible values are "error", "warn", and "ignore";
++ autoIndex: 
+  * it enables or disables automatic indexing for collection;
+  * when enabled, MongoDB automatically creates indexes for collection based on its schema;
++ storageEngine: 
+  * it specifies storage engine to use for collection;
+  * default storage engine is WiredTiger; 
+  * other storage engines such as MMAPv1 and In-Memory are also available.
+
+```perl
+  db.createCollection("characters", {
+    capped: true,
+    size: 10000,
+    max: 500,
+    validator: {
+      $or: [
+        { name: { $type: "string" } },
+        { alias: { $type: "string" } }
+      ]
+    },
+    validationLevel: "strict",
+    validationAction: "error",
+    autoIndex: false,
+    storageEngine: {
+      wiredTiger: { configString: "block_compressor=zlib" }
+    }
+  })
+```
 
 ### Counting Documents
 
