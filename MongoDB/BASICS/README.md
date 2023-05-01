@@ -37,30 +37,29 @@ Understanding these data types is essential as they play a crucial role in schem
 + **Double**
   * it is used to store floating-point numbers;
   * _for example: character's weight & height;_
+  * ```javascript
+      {
+        name: "Geralt of Rivia",
+        age: 100,
+        weight: 90.5,
+        height: 190.0,
+        occupation: "Witcher",
+        weapon: "Silver sword",
+        catchphrase: "Evil is evil. Lesser, greater, middling, it's all the same.",
+      }
+    ```  
 + **Boolean**
   * it is used to store true or false values;
   * _for example: whether a character is a monster or not;_
-> ```BSON
->  {
->    name: "Geralt of Rivia",
->    age: 100,
->    weight: 90.5,
->    height: 190.0,
->    occupation: "Witcher",
->    monster: false,
->    weapon: "Silver sword",
->    catchphrase: "Evil is evil. Lesser, greater, middling, it's all the same.",
->  },
->  
->  {
->    name: "Ciri",
->    age: 22,
->    monster: false,
->    occupation: "Princess",
->    location: "Kaer Morhen",
->  }
-> ```
-
+  * ```javascript  
+      {
+        name: "Ciri",
+        age: 22,
+        monster: false,
+        occupation: "Princess",
+        location: "Kaer Morhen",
+      }
+    ```
 + **Date**
   * it is used to store dates and times;
   * Dates are stored as UTC times;
@@ -69,15 +68,14 @@ Understanding these data types is essential as they play a crucial role in schem
   * it is used to store an ordered list of values;
   * you can store multiple data types in an array; 
   * _for example: list of magic spells;_
-> ```BSON  
->  {
->    name: "Yennefer of Vengerberg",
->    dateOfBirth: new Date("1173-02-09"),
->    spells: ["Aard", "Quen", "Axii"],
->    occupation: "Sorceress",
->  }  
-> ```
-
+  * ```javascript  
+      {
+        name: "Yennefer of Vengerberg",
+        dateOfBirth: new Date("1173-02-09"),
+        spells: ["Aard", "Quen", "Axii"],
+        occupation: "Sorceress",
+      }  
+    ```
 + **ObjectID**
   * it is used to store unique identifiers for documents in collection;
   * MongoDB generates ObjectIDs automatically when you insert a new document;
@@ -86,13 +84,13 @@ Understanding these data types is essential as they play a crucial role in schem
   * ```javascript
       const { ObjectID } = require("mongodb");
   
-     const character = {
-       _id: new ObjectID(),
-       name: "Triss Merigold",
-       occupation: "Sorceress",
-     }
+      const character = {
+        _id: new ObjectID(),
+        name: "Triss Merigold",
+        occupation: "Sorceress",
+      }
   
-     db.collection("characters").insertOne(character);
+      db.collection("characters").insertOne(character);
     ```
 + **Binary data**
   * it is used to store binary data, such as images or audio files;
@@ -119,10 +117,11 @@ Understanding these data types is essential as they play a crucial role in schem
 
       db.collection("characters").find(query);
     ```
+  * _example of query:_ ``db.collection.find({ name: { $regex: 'J.*' } });``
 + **Null**
   * it is used to store a null value;
   * _for example: if character does not have specific attribute;_
-  * ```BSON
+  * ```javascript
      {
        name: "Jaskier",
        occupation: "Bard",
@@ -130,11 +129,33 @@ Understanding these data types is essential as they play a crucial role in schem
      }
     ```
 
-### Embedded Documents and Arrays
+### Embedded Documents Arrays
+&ensp; In MongoDB, one of the powerful features is the ability to store complex data structures like Embedded Documents Arrays. These are essentially arrays of sub-documents (also known as nested documents) that can be stored within a single document. This allows us to model complex data relationships in a highly efficient way while maintaining good performance.
+```javascript
+{
+  name: "Geralt of Rivia",
+  occupation: "Witcher",
+  quests: [
+    {
+      name: "The Last Wish",
+      location: "Skellige",
+      completed: true
+    },
+    {
+      name: "The Tower Outta Nowheres",
+      location: "Velen",
+      completed: false
+    },
+    {
+      name: "The Witcher's Forge",
+      location: "Kaer Morhen",
+      completed: false
+    }
+  ]
+}
+```
 
-
-
-
+> _Keep in mind that MongoDB has a document size limitation of 16MB, so if you expect the embedded data to grow over time, you should consider alternative approaches, such as using separate collections and referencing them instead._
 
 
 ## <a name="colometh"></a>📖 Collections and Methods
