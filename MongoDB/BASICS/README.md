@@ -40,7 +40,7 @@ Understanding these data types is essential as they play a crucial role in schem
 + **Boolean**
   * it is used to store true or false values;
   * _for example: whether a character is a monster or not;_
-> ```
+> ```BSON
 >  {
 >    name: "Geralt of Rivia",
 >    age: 100,
@@ -67,8 +67,9 @@ Understanding these data types is essential as they play a crucial role in schem
   * _for example: character's date of birth;_
 + **Array**
   * it is used to store an ordered list of values;
-  * you can store multiple data types in an array;  
-> ```MongoDB  
+  * you can store multiple data types in an array; 
+  * _for example: list of magic spells;_
+> ```BSON  
 >  {
 >    name: "Yennefer of Vengerberg",
 >    dateOfBirth: new Date("1173-02-09"),
@@ -82,29 +83,52 @@ Understanding these data types is essential as they play a crucial role in schem
   * MongoDB generates ObjectIDs automatically when you insert a new document;
   * _for example: unique identifier for each character;_
   * _for Geralt's document in database could be "60a7a0c0a55b150011285d77";_
-> ``javascript
->  const { ObjectID } = require("mongodb");
->  
->  const character = {
->    _id: new ObjectID(),
->    name: "Triss Merigold",
->    occupation: "Sorceress",
->  }
->  
->  db.collection("characters").insertOne(character);
-> ```
-
+  * ```javascript
+      const { ObjectID } = require("mongodb");
+  
+     const character = {
+       _id: new ObjectID(),
+       name: "Triss Merigold",
+       occupation: "Sorceress",
+     }
+  
+     db.collection("characters").insertOne(character);
+    ```
 + **Binary data**
   * it is used to store binary data, such as images or audio files;
+  * _for example: image of monster that Geralt has hunted;_
+  * ```javascript
+      const fs = require("fs");
+      const monsterImage = fs.readFileSync("path/to/image.jpg");
 
+      const monster = {
+        name: "Striga",
+        image: monsterImage,
+        description: "A cursed princess turned into a monster",
+      }
+
+      db.collection("monsters").insertOne(monster);
+    ```
 + **Regular expression**
   * it is used to store regular expressions, which are used to match patterns in strings;
+  * _for example: to search for character names;_
+  * ```javascript
+        const query = {
+        name: /ger/i,
+      }
 
+      db.collection("characters").find(query);
+    ```
 + **Null**
   * it is used to store a null value;
-
-
-
+  * _for example: if character does not have specific attribute;_
+  * ```BSON
+     {
+       name: "Jaskier",
+       occupation: "Bard",
+       lastName: null,
+     }
+    ```
 
 ### Embedded Documents and Arrays
 
