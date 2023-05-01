@@ -169,7 +169,7 @@ Understanding these data types is essential as they play a crucial role in schem
 2. to create collection in that database:\
 _you can specify maximum number of documents that collection can hold_
 ```perl
-  db.createCollection(" monstersCollection", { max: 800 })
+  db.createCollection("monstersCollection", { capped: true, size: 800, max: 1000 })
 ```
 3. to insert single document into "monsters" collection:
 ```perl
