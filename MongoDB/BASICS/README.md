@@ -194,10 +194,7 @@ Understanding these data types is essential as they play a crucial role in schem
 ```perl
   db.createCollection("monsters", { capped: true, size: 800, max: 1000 }) 
 
-  db.createCollection("characters", {
-    capped: true,
-    size: 10000,
-    max: 500,
+  db.createCollection("characters", { capped: true, size: 1000, max: 1000,
     validator: {
       $or: [
         { name: { $type: "string" } },
@@ -206,7 +203,6 @@ Understanding these data types is essential as they play a crucial role in schem
     },
     validationLevel: "strict",
     validationAction: "error",
-    autoIndex: false,
     storageEngine: {
       wiredTiger: { configString: "block_compressor=zlib" }
     }
