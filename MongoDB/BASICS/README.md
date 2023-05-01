@@ -230,6 +230,12 @@ _you can specify maximum number of documents that collection can hold_
 ```
 
 ### Counting Documents
+&ensp; When working with MongoDB, you might often need to know the number of documents present in a collection. MongoDB provides a few methods to efficiently count documents in a collection. 
++ **countDocuments()**
+  * it is used to count number of documents in collection based on specified filter;
+  * it provides an accurate count that may involve reading all documents in collection;
+
+
 
 
 
