@@ -57,7 +57,7 @@ Understanding these data types is essential as they play a crucial role in schem
         age: 22,
         monster: false,
         occupation: "Princess",
-        location: "Kaer Morhen",
+        location: "Kaer Morhen"
       }
     ```
 + **Date**
@@ -167,23 +167,6 @@ Understanding these data types is essential as they play a crucial role in schem
   use witcherWorld_db
 ```
 2. to create collection in that database:\
-_you can specify maximum number of documents that collection can hold_
-```perl
-  db.createCollection("monstersCollection", { capped: true, size: 800, max: 1000 })
-```
-3. to insert single document into "monsters" collection:
-```perl
-  db.monsters.insertOne({ name: "Griffin", description: "Powerful creature with head and wings of an eagle and body of a lion" })
-```
-4. to insert multiple documents into "monsters" collection
-```perl
-  db.monsters.insertMany([
-    { name: "Drowner", description: "Water-dwelling creature that preys on humans and animals" },
-    { name: "Nekker", description: "Small, goblin-like creature that lives in groups and can be dangerous in large numbers" },
-    { name: "Leshen", description: "Forest-dwelling creature that can control plants and animals" }
-  ])
-```
-
 &ensp; Here are some of the most common options that developers specify when creating collections:
 + capped: 
   * it creates a capped collection with a fixed size; 
@@ -208,8 +191,9 @@ _you can specify maximum number of documents that collection can hold_
   * it specifies storage engine to use for collection;
   * default storage engine is WiredTiger; 
   * other storage engines such as MMAPv1 and In-Memory are also available.
-
 ```perl
+  db.createCollection("monsters", { capped: true, size: 800, max: 1000 }) 
+
   db.createCollection("characters", {
     capped: true,
     size: 10000,
@@ -227,6 +211,20 @@ _you can specify maximum number of documents that collection can hold_
       wiredTiger: { configString: "block_compressor=zlib" }
     }
   })
+```
+3. to insert single document into "monsters" collection:
+```perl
+  db.monsters.insertOne({ name: "Griffin", description: "Powerful creature with head and wings of an eagle and body of a lion" })
+
+  db.characters.insertOne({ name: "Ciri", age: 22, monster: false, occupation: "Princess", location: "Kaer Morhen" });
+```
+4. to insert multiple documents into "monsters" collection
+```perl
+  db.monsters.insertMany([
+    { name: "Drowner", description: "Water-dwelling creature that preys on humans and animals" },
+    { name: "Nekker", description: "Small, goblin-like creature that lives in groups and can be dangerous in large numbers" },
+    { name: "Leshen", description: "Forest-dwelling creature that can control plants and animals" }
+  ])
 ```
 
 ### Counting Documents
