@@ -26,9 +26,70 @@ Some features of JSON include:
 Understanding these data types is essential as they play a crucial role in schema design and query performance.\
 &ensp; The following is a brief summary of the different data types supported in MongoDB.
 
+&ensp; We can consider this subtopic on the basis of the "The Witcher" universe.
++ **String**
+  * it is used to store text; 
+  * for example: character's name;
++ **Integer**
+  * it is used to store whole numbers;
+  * MongoDB supports 32-bit and 64-bit integers;
+  * for example: character's age;
++ **Double**
+  * it is used to store floating-point numbers;
+  * for example: character's weight & height;
++ **Boolean**
+  * it is used to store true or false values;
+  * for example: whether a character is a monster or not;
++ **Date**
+  * it is used to store dates and times;
+  * Dates are stored as UTC times;
+  * for example: character's date of birth;
+
+> ```MongoDB
+>  {
+>    name: "Geralt of Rivia",
+>    age: 100,
+>    weight: 90.5,
+>    height: 190.0,
+>    occupation: "Witcher",
+>    monster: false,
+>    weapon: "Silver sword",
+>    catchphrase: "Evil is evil. Lesser, greater, middling, it's all the same.",
+>  },
+>  
+>  {
+>    name: "Ciri",
+>    age: 22,
+>    monster: false,
+>    occupation: "Princess",
+>    location: "Kaer Morhen",
+>  },
+>  
+>  {
+>    name: "Yennefer of Vengerberg",
+>    dateOfBirth: new Date("1173-02-09"),
+>    occupation: "Sorceress",
+>  }
+> ```
 
 
 
++ **ObjectID**
+  * it is used to store unique identifiers for documents in collection;
+  * MongoDB generates ObjectIDs automatically when you insert a new document;
+  * for example: 
++ **Array**
+  * it is used to store an ordered list of values;
+  * You can store multiple data types in an array.
+
+**Binary data**
+it is used to store binary data, such as images or audio files.
+
+**Regular expression**
+it is used to store regular expressions, which are used to match patterns in strings.
+
+**Null**
+it is used to store a null value.
 
 
 
