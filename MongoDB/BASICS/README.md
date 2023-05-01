@@ -29,23 +29,18 @@ Understanding these data types is essential as they play a crucial role in schem
 &ensp; We can consider this subtopic on the basis of the "The Witcher" universe.
 + **String**
   * it is used to store text; 
-  * for example: character's name;
+  * _for example: character's name;_
 + **Integer**
   * it is used to store whole numbers;
   * MongoDB supports 32-bit and 64-bit integers;
-  * for example: character's age;
+  * _for example: character's age;_
 + **Double**
   * it is used to store floating-point numbers;
-  * for example: character's weight & height;
+  * _for example: character's weight & height;_
 + **Boolean**
   * it is used to store true or false values;
-  * for example: whether a character is a monster or not;
-+ **Date**
-  * it is used to store dates and times;
-  * Dates are stored as UTC times;
-  * for example: character's date of birth;
-
-> ```MongoDB
+  * _for example: whether a character is a monster or not;_
+> ```
 >  {
 >    name: "Geralt of Rivia",
 >    age: 100,
@@ -63,33 +58,50 @@ Understanding these data types is essential as they play a crucial role in schem
 >    monster: false,
 >    occupation: "Princess",
 >    location: "Kaer Morhen",
->  },
->  
->  {
->    name: "Yennefer of Vengerberg",
->    dateOfBirth: new Date("1173-02-09"),
->    occupation: "Sorceress",
 >  }
 > ```
 
-
++ **Date**
+  * it is used to store dates and times;
+  * Dates are stored as UTC times;
+  * _for example: character's date of birth;_
++ **Array**
+  * it is used to store an ordered list of values;
+  * you can store multiple data types in an array;  
+> ```MongoDB  
+>  {
+>    name: "Yennefer of Vengerberg",
+>    dateOfBirth: new Date("1173-02-09"),
+>    spells: ["Aard", "Quen", "Axii"],
+>    occupation: "Sorceress",
+>  }  
+> ```
 
 + **ObjectID**
   * it is used to store unique identifiers for documents in collection;
   * MongoDB generates ObjectIDs automatically when you insert a new document;
-  * for example: 
-+ **Array**
-  * it is used to store an ordered list of values;
-  * You can store multiple data types in an array.
+  * _for example: unique identifier for each character;_
+  * _for Geralt's document in database could be "60a7a0c0a55b150011285d77";_
+> ``javascript
+>  const { ObjectID } = require("mongodb");
+>  
+>  const character = {
+>    _id: new ObjectID(),
+>    name: "Triss Merigold",
+>    occupation: "Sorceress",
+>  }
+>  
+>  db.collection("characters").insertOne(character);
+> ```
 
-**Binary data**
-it is used to store binary data, such as images or audio files.
++ **Binary data**
+  * it is used to store binary data, such as images or audio files;
 
-**Regular expression**
-it is used to store regular expressions, which are used to match patterns in strings.
++ **Regular expression**
+  * it is used to store regular expressions, which are used to match patterns in strings;
 
-**Null**
-it is used to store a null value.
++ **Null**
+  * it is used to store a null value;
 
 
 
