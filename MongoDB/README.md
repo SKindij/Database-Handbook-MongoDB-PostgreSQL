@@ -26,6 +26,7 @@ MongoDB is a popular **NoSQL database** that stores data in JSON-like documents.
 * 📖 [Collections and Methods](https://github.com/SKindij/Database-Handbook/tree/main/MongoDB/BASICS#colometh)
   + Creating database and collections
   + Counting Documents
+  + bulkWrite()
   + validate()
 * 📖 [Useful Concepts](https://github.com/SKindij/Database-Handbook/tree/main/MongoDB/BASICS#concepts)
   + Read / Write Concerns
@@ -43,7 +44,7 @@ MongoDB is a popular **NoSQL database** that stores data in JSON-like documents.
 ## 📚 What is indexing?
 * 📖 Creating indexes
 * 📖 Index types
-* 📖 Using indexes to improve query performance
+* 📖 improving query performance
 
 
 ## 📚 What is aggregation?
@@ -55,7 +56,7 @@ MongoDB is a popular **NoSQL database** that stores data in JSON-like documents.
 ## 📚 What is schema design?
 * 📖 Schema design patterns
 * 📖 Normalization vs. denormalization
-* 📖 Embedded documents vs. referenced documents
+* 📖 Embedded vs. referenced documents
 * 📖 Replication and Sharding
 
 ## 📚 What is replication?
