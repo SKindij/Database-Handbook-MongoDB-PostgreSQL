@@ -228,10 +228,11 @@ Understanding these data types is essential as they play a crucial role in schem
 + **countDocuments()**
   * it is used to count number of documents in collection based on specified filter;
   * it provides an accurate count that may involve reading all documents in collection;
-
-
-
-
+  * syntax: ``collection.countDocuments(filter, options);``
++ **estimatedDocumentCount()**
+  * it provides approximate count of documents in collection, without applying any filters;
+  * it uses collection’s metadata to determine count and is generally faster;
+  * syntax: ``collection.estimatedDocumentCount(options);``
 
 ### validate()
 
