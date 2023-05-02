@@ -234,6 +234,31 @@ Understanding these data types is essential as they play a crucial role in schem
   * it uses collection’s metadata to determine count and is generally faster;
   * syntax: ``collection.estimatedDocumentCount(options);``
 
+### bulkWrite()
+&ensp; Bulk write operations allow you to perform multiple create, update, and delete operations in a single command, which can significantly improve the performance of your application. 
++ Ordered Bulk Write: 
+  * MongoDB executes the write operations in the order you provide;
+  * if a write operation fails, MongoDB returns an error and does not proceed with the remaining operations;
+  * ```javascript
+      const witcherCollection = db.collection('witcherCharacters').initializeOrderedBulkOp();
+        // insert new character
+        witcherCollection.insert({ _id: 1, name: 'Geralt of Rivia', profession: 'Witcher' });
+        // update existing character
+        witcherCollection.find({ name: 'Yennefer' }).updateOne({ $set: { profession: 'Sorceress' } });
+        // remove character
+        witcherCollection.find({ _id: 3 }).remove();
+        // execute the bulk operation
+        witcherCollection.execute((err, result) => {
+            // handle errors or results
+        });
+     ```
++ Unordered Bulk Write: 
+  * MongoDB can execute the write operations in any order;
+  * if a write operation fails, MongoDB will continue to process the remaining write operations;
+  * ```javascript
+       const witcherCollection = db.collection('witcherCharacters').initializeUnorderedBulkOp();
+     ```
+
 ### validate()
 &ensp; This command is used to examine a MongoDB collection to verify and report on the correctness of its internal structures, such as indexes, namespace details, or documents. It can also return statistics about the storage and distribution of data within a collection.\
 The basic syntax of the validate command is as follows: ``db.runCommand({validate: "<collection_name>", options...})``
