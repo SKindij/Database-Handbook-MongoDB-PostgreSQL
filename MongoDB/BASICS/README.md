@@ -235,6 +235,10 @@ Understanding these data types is essential as they play a crucial role in schem
   * syntax: ``collection.estimatedDocumentCount(options);``
 
 ### validate()
+&ensp; This command is used to examine a MongoDB collection to verify and report on the correctness of its internal structures, such as indexes, namespace details, or documents. It can also return statistics about the storage and distribution of data within a collection.\
+The basic syntax of the validate command is as follows: ``db.runCommand({validate: "<collection_name>", options...})``
+
+> _Keep in mind that validate command should be used mainly for diagnostics and troubleshooting purposes, as it can impact system performance when validating large collections or when using full flag. Use it when you suspect that there might be corruption or discrepancies within the collection’s data or internal structures_
 
 
 
