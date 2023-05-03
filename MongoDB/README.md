@@ -42,9 +42,9 @@ MongoDB is a popular **NoSQL database** that stores data in JSON-like documents.
 
 
 ## 📚 What is indexing?
-* 📖 Creating indexes
-* 📖 Index types
-* 📖 improving query performance
+* 📖 [Creating indexes](https://github.com/SKindij/Database-Handbook/tree/main/MongoDB/INDEXES#creating)
+* 📖 [Index types](https://github.com/SKindij/Database-Handbook/tree/main/MongoDB/INDEXES#types)
+* 📖 [Query Optimization](https://github.com/SKindij/Database-Handbook/tree/main/MongoDB/INDEXES#optimization)
 
 
 ## 📚 What is aggregation?
@@ -53,11 +53,13 @@ MongoDB is a popular **NoSQL database** that stores data in JSON-like documents.
 * 📖 Grouping and sorting data
 * 📖 Schema Design
 
+
 ## 📚 What is schema design?
 * 📖 Schema design patterns
 * 📖 Normalization vs. denormalization
 * 📖 Embedded vs. referenced documents
 * 📖 Replication and Sharding
+
 
 ## 📚 What is replication?
 * 📖 Replica set configuration
@@ -73,10 +75,10 @@ MongoDB is a popular **NoSQL database** that stores data in JSON-like documents.
 * 📖 Deployment strategies
 * 📖 Advanced Topics
 
+
 ## 📚 Geospatial indexing and querying
 * 📖 Text search
 * 📖 MapReduce
 * 📖 Transactions
 * 📖 Change streams
-
 
