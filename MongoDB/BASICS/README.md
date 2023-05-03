@@ -276,24 +276,48 @@ The basic syntax of the validate command is as follows: ``db.runCommand({validat
 &ensp; **MongoDB Atlas** is fully managed, global cloud database service. It offers features such as automatic backup and scaling, as well as advanced security for your MongoDB data. Atlas makes it easy to deploy, manage, and optimize your MongoDB databases in the cloud.
 
 ### Read / Write Concerns
-&ensp; A read concern determines the consistency level of the data returned by a query. It specifies the version of data that a query should return.
-MongoDB supports different **read concern levels**:
-+ local (default): 
-  * returns the most recent data available on the primary node at the time of query execution;
-  * it does not guarantee consistency across replica sets;
-+ available: 
-  * query returns the most recent data available on the queried node;
-  * this level is only applicable to sharded clusters;
-+ majority: 
-  * query returns data that has been acknowledged by a majority of replica set members;
-  * it provides a higher level of consistency but may have higher latency;
-+ linearizable: 
-  * ensures reading the most recent data that has been acknowledged by a majority of replica sets; 
-  * this level guarantees highest consistency but can be the slowest among all levels;
-+ snapshot: 
-  * returns the data from a specific snapshot timestamp;
-  * this level is useful for read transactions with snapshot isolation.
 
+&ensp; A read concern determines the consistency level of the data returned by a query. It specifies the version of data that a query should return.\
+&ensp; MongoDB supports different **read concern levels**:
++ local (default): 
+  * _returns the most recent data available on the primary node at the time of query execution;_
+  * _it does not guarantee consistency across replica sets;_
++ available: 
+  * _query returns the most recent data available on the queried node;_
+  * _this level is only applicable to sharded clusters;_
++ majority: 
+  * _query returns data that has been acknowledged by a majority of replica set members;_
+  * _it provides a higher level of consistency but may have higher latency;_
++ linearizable: 
+  * _ensures reading the most recent data that has been acknowledged by a majority of replica sets;_
+  * _this level guarantees highest consistency but can be the slowest among all levels;_
++ snapshot: 
+  * _returns the data from a specific snapshot timestamp;_
+  * _this level is useful for read transactions with snapshot isolation._
+
+&ensp; A write concern indicates the level of acknowledgment MongoDB should provide when writing data to the database. It ensures that the data has been successfully written and replicated before acknowledging the write operation.\
+&ensp; The different **write concern levels** are:
++ w: 0: 
+  * _write operation is unacknowledged, which means MongoDB does not send any acknowledgment;_
+  * _this level provides the lowest latency but carries the risk of losing data;_
++ w: 1 (default): 
+  * _write operation is acknowledged after being successfully written to the primary node;_
+  * _it does not guarantee replication to other replica set members;_
++ w: majority: 
+  * _write operation is acknowledged after being written and replicated to a majority of replica set members;_
+  * _this level provides better data durability but may have increased latency;_
++ w: <number>: 
+  * _write operation is acknowledged after being replicated to the specified number of replica set members;_
+  * _this level provides a custom level of data durability._
+
+Additional options can be used to fine-tune the write concern:
++ j: true/false: 
+  * _specifies whether the write operation must be written to the journal before acknowledgment;_
+  * _setting ``j: true`` ensures the data is committed to the journal and provides increased durability;_
++ wtimeout: <ms>: 
+  * _specifies a time limit in milliseconds for write operations to be acknowledged;_
+  * _if the acknowledgment is not received within the specified time, the operation returns a timeout error. However, this does not mean the write operation failed; it may still be successful at a later point in time._
+ 
 ### Cursors
 
 
