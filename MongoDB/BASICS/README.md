@@ -414,9 +414,15 @@ _When you execute a query to fetch documents from a database, MongoDB returns a 
 
  
 
-### Array Operators
-
- 
+### Array Operators allow you to perform various operations on arrays within documents
+- ``$in``: used to match any one of the values specified in an array;
+  * ``db.collection.find({ field: { $in: [<value1>, <value2>, ...] } });``
+- ``$nin`` (Not In): used to filter documents where value of field is not in specified array; 
+- ``$all``: matches documents where an array field contains all specified values;
+- ``$elemMatch``: matches documents where array field contains at least one element that matches specified conditions;
+- ``$size``: matches documents where an array field contains a specified number of elements;
+- ``$addToSet``: used to add unique values to an array field;
+- ``$push``: used to add values to an array field;
 
 ### Bitwise Operators
 
