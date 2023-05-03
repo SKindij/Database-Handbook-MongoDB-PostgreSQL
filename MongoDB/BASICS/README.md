@@ -402,7 +402,7 @@ _When you execute a query to fetch documents from a database, MongoDB returns a 
 >  }); 
 > ```  
 
-### Element Operators are used to query documents based on the presence, type, or absence of a field and its value. 
+### Element Operators are used to query documents based on presence, type, or absence of field and its value
 - ``$exists``: matches documents that have the specified field;
   * ``db.collection.find({ field: { $exists: <boolean> } });``
 - ``$type``: matches documents where specified field is of specified BSON type;
@@ -410,10 +410,14 @@ _When you execute a query to fetch documents from a database, MongoDB returns a 
 - ``$regex``: searches for any documents that match the provided pattern;
    * ``db.collection.find({ fieldName: { $regex: 'your-pattern' } });``
 
-### Evaluation Operators
-
+### Evaluation Operators perform operations on specific fields and values, such as regular expression searches or checking the size of arrays. 
+- ``$expr``: allows the use of aggregation expressions within query language;
+- ``$jsonSchema``: matches documents that fulfill the specified JSON Schema;
+- ``$mod``: matches documents where specified field has value divisible by divisor and equal to remainder;
+- ``$regex``: matches documents where specified field contains string that matches provided regular expression pattern;
+- ``$text``: performs text search on the content of indexed fields in the documents;
+- ``$where``: matches documents that satisfy a JavaScript expression;
  
-
 ### Array Operators allow you to perform various operations on arrays within documents
 - ``$in``: used to match any one of the values specified in an array;
   * ``db.collection.find({ field: { $in: [<value1>, <value2>, ...] } });``
