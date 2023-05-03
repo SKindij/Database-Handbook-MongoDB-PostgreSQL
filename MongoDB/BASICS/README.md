@@ -363,6 +363,7 @@ _When you execute a query to fetch documents from a database, MongoDB returns a 
  
 ### Comparison Operators allow you to compare the value of a field with specified values.
 - ``$eq``: matches values that are equal to the specified value;
+  * ``db.collection.find({ field: { $eq: value } });``
 - ``$gt``: matches values that are greater than the specified value;
 - ``$gte``: matches values that are greater than or equal to specified value;
 - ``$lt``: matches values that are less than the specified value;
@@ -373,8 +374,10 @@ _When you execute a query to fetch documents from a database, MongoDB returns a 
 
 ### Logical Operators provide ways to combine multiple query conditions. 
 - ``$and``: matches documents where all specified conditions are true;
+  * ``db.collection.find({ $and: [{ expression1 }, { expression2 }, ... ] });``
 - ``$or``: matches documents where at least one of specified conditions is true;
 - ``$not``: matches documents where specified condition is not true;
+  * ``db.collection.find({ field: { $not: { <operator-expression> } } });``
 - ``$nor``: matches documents where none of specified conditions are true.
 
 > ```javascript
@@ -399,9 +402,13 @@ _When you execute a query to fetch documents from a database, MongoDB returns a 
 >  }); 
 > ```  
 
-### Element Operators
-
- 
+### Element Operators are used to query documents based on the presence, type, or absence of a field and its value. 
+- ``$exists``: matches documents that have the specified field;
+  * ``db.collection.find({ field: { $exists: <boolean> } });``
+- ``$type``: matches documents where specified field is of specified BSON type;
+   * ``db.collection.find({ fieldName: {$type: dataType;} });``
+- ``$regex``: searches for any documents that match the provided pattern;
+   * ``db.collection.find({ fieldName: { $regex: 'your-pattern' } });``
 
 ### Evaluation Operators
 
