@@ -319,11 +319,45 @@ Additional options can be used to fine-tune the write concern:
   * _if the acknowledgment is not received within the specified time, the operation returns a timeout error. However, this does not mean the write operation failed; it may still be successful at a later point in time._
  
 ### Cursors
+&ensp; It is an object that enables you to iterate over and retrieve documents from a query result.\
+_When you execute a query to fetch documents from a database, MongoDB returns a pointer to the result set, known as a cursor. The cursor automatically takes care of batch processing of the result documents, providing an efficient way to handle large amounts of data._
+> ```javascript
+>  const cursor = db.collection('myCollection').find();
+>   
+>  cursor.forEach((doc) => { console.log(doc); }); 
+> ``` 
+ 
+&ensp; Cursors provide several methods that allow you to manipulate the result set and control the query execution. 
+* ``count()``: returns total number of documents in result set;
+* ``limit(n)``: limits number of documents retrieved to n;
+* ``skip(n)``: skips first n documents in result set;
+* ``sort(field, order)``: sorts documents (1 for ascending, -1 for descending);
+* ``project(field)``: specifies fields to include or exclude from result documents. 
+ 
+> ```javascript 
+>  const witcherCursor = db
+>    .collection('witcherCharacters')
+>    .find({ profession: 'Witcher' }) // to search for all characters who are Witchers
+>    .sort('name', 1) // to sort results by name in ascending order
+>    .limit(12) // to limit the number of results to 12
+>    .skip(9) // to skip the first 9 results
+>    .project({ name: 1, age: 1, _id: 0 }); // to only return name and age fields, and exclude _id field
+>  // to execute the query and return the results as an array
+>  witcherCursor.toArray((err, result) => {
+>    // handle error or result
+>  });
+> ``` 
 
-
+&ensp; Cursors automatically close when all documents in the result set have been retrieved or after 10 minutes of inactivity. However, in some cases, you may want to manually close a cursor: ``cursor.close();``.
+ 
 ### Retryable Reads / Writes
 
 
+ 
+ 
+ 
+ 
+ 
 
 ## <a name="operators"></a>📖 Query Operators
 
