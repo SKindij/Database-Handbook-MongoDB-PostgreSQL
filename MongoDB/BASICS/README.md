@@ -359,21 +359,57 @@ _When you execute a query to fetch documents from a database, MongoDB returns a 
  
 
 ## <a name="operators"></a>📖 Query Operators
+&ensp; They provide powerful ways to search and manipulate documents in a MongoDB collection. 
+ 
+### Comparison Operators allow you to compare the value of a field with specified values.
+- ``$eq``: matches values that are equal to the specified value;
+- ``$gt``: matches values that are greater than the specified value;
+- ``$gte``: matches values that are greater than or equal to specified value;
+- ``$lt``: matches values that are less than the specified value;
+- ``$lte``: matches values that are less than or equal to specified value;
+- ``$ne``: matches values that are not equal to the specified value;
+- ``$in``: matches values that are in the specified array;
+- ``$nin``: matches values that are not in the specified array.
 
-### Comparison Operators
+### Logical Operators provide ways to combine multiple query conditions. 
+- ``$and``: matches documents where all specified conditions are true;
+- ``$or``: matches documents where at least one of specified conditions is true;
+- ``$not``: matches documents where specified condition is not true;
+- ``$nor``: matches documents where none of specified conditions are true.
 
-
-### Logical Operators
-
+> ```javascript
+>  const witcherCursor = db
+>  // we're working with collection that stores info about characters from Witcher universe
+>    .collection('witcherCharacters')
+>    .find({ // to search for characters
+>      age: { $gt: 50 }, // who are over 50 years old
+>      $or: [ // who have profession of either "Sorceress" or "Witcher"
+>        { profession: 'Sorceress' },
+>        { profession: 'Witcher' },
+>      ],
+>      $nor: [ // who do not have status of either "Dead" or "Unknown"
+>        { status: 'Dead' },
+>        { status: 'Unknown' },
+>      ],
+>    })
+>    .sort('age', -1); // to sort results by age in descending order
+>  
+>  witcherCursor.toArray((err, result) => {
+>    // handle error or result
+>  }); 
+> ```  
 
 ### Element Operators
 
+ 
 
 ### Evaluation Operators
 
+ 
 
 ### Array Operators
 
+ 
 
 ### Bitwise Operators
 
