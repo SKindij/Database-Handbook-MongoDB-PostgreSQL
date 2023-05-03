@@ -273,10 +273,26 @@ The basic syntax of the validate command is as follows: ``db.runCommand({validat
 &ensp; With the aggregation framework, you can perform complex data analysis tasks, such as filtering, grouping, and computing averages, efficiently and with ease.\
 &ensp; MongoDB offers high availability by allowing **data replication** across multiple servers. The replication feature ensures that if one server becomes unavailable, the others can continue to function without data loss.\
 &ensp; One of MongoDB’s strengths is its ability to scale horizontally through **sharding**, the process of splitting and distributing data across multiple servers or clusters. This helps to distribute load, ensure better performance, and maintain availability as the size of the dataset grows.\
-&ensp; **MongoDB Atlas** is a fully managed, global cloud database service provided by MongoDB. It offers features such as automatic backup and scaling, as well as advanced security for your MongoDB data. Atlas makes it easy to deploy, manage, and optimize your MongoDB databases in the cloud.
+&ensp; **MongoDB Atlas** is fully managed, global cloud database service. It offers features such as automatic backup and scaling, as well as advanced security for your MongoDB data. Atlas makes it easy to deploy, manage, and optimize your MongoDB databases in the cloud.
 
 ### Read / Write Concerns
-
+&ensp; A read concern determines the consistency level of the data returned by a query. It specifies the version of data that a query should return.
+MongoDB supports different **read concern levels**:
++ local (default): 
+  * returns the most recent data available on the primary node at the time of query execution;
+  * it does not guarantee consistency across replica sets;
++ available: 
+  * query returns the most recent data available on the queried node;
+  * this level is only applicable to sharded clusters;
++ majority: 
+  * query returns data that has been acknowledged by a majority of replica set members;
+  * it provides a higher level of consistency but may have higher latency;
++ linearizable: 
+  * ensures reading the most recent data that has been acknowledged by a majority of replica sets; 
+  * this level guarantees highest consistency but can be the slowest among all levels;
++ snapshot: 
+  * returns the data from a specific snapshot timestamp;
+  * this level is useful for read transactions with snapshot isolation.
 
 ### Cursors
 
