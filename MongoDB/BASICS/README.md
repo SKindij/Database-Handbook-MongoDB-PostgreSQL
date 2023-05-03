@@ -351,12 +351,11 @@ _When you execute a query to fetch documents from a database, MongoDB returns a 
 &ensp; Cursors automatically close when all documents in the result set have been retrieved or after 10 minutes of inactivity. However, in some cases, you may want to manually close a cursor: ``cursor.close();``.
  
 ### Retryable Reads / Writes
-
-
- 
- 
- 
- 
+&ensp; They are an essential feature in MongoDB that provides the ability to automatically retry certain read and write operations, ensuring data consistency and improving the fault tolerance of your applications. This feature is especially useful in case of transient network errors or replica set elections that may cause operations to fail temporarily.
+* **retryable reads** allow MongoDB to automatically retry eligible read operations if they fail due to a transient error. This ensures that the application can continue to perform read operations seamlessly without throwing errors at users due to temporary issues.
+  + Examples include: ``find(), aggregate(), distinct()``
+* **retryable writes** allow MongoDB to automatically retry specific write operations that fail due to transient errors. This helps maintain data consistency and reduces the chances of data loss or duplicate writes.
+  + Examples include: ``insertOne(), updateOne(), deleteOne(), findOneAndUpdate()``
  
 
 ## <a name="operators"></a>📖 Query Operators
