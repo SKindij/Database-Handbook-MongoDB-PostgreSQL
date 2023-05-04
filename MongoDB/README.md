@@ -48,10 +48,10 @@ MongoDB is a popular **NoSQL database** that stores data in JSON-like documents.
 
 
 ## 📚 What is aggregation?
-* 📖 Aggregation pipeline stages
-* 📖 Aggregation operators
-* 📖 Grouping and sorting data
-* 📖 Schema Design
+* 📖 [Aggregation pipeline stages](https://github.com/SKindij/Database-Handbook/tree/main/MongoDB/AGGREGATION#pipeline)
+* 📖 [Aggregation operators](https://github.com/SKindij/Database-Handbook/tree/main/MongoDB/AGGREGATION#operators)
+* 📖 [Grouping and sorting data](https://github.com/SKindij/Database-Handbook/tree/main/MongoDB/AGGREGATION#sorting)
+* 📖 [Schema Design](https://github.com/SKindij/Database-Handbook/tree/main/MongoDB/AGGREGATION#design)
 
 
 ## 📚 What is schema design?
