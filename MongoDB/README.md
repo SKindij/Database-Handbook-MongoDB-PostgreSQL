@@ -51,14 +51,13 @@ MongoDB is a popular **NoSQL database** that stores data in JSON-like documents.
 * 📖 [Aggregation pipeline stages](https://github.com/SKindij/Database-Handbook/tree/main/MongoDB/AGGREGATION#pipeline)
 * 📖 [Aggregation operators](https://github.com/SKindij/Database-Handbook/tree/main/MongoDB/AGGREGATION#operators)
 * 📖 [Grouping and sorting data](https://github.com/SKindij/Database-Handbook/tree/main/MongoDB/AGGREGATION#sorting)
-* 📖 [Schema Design](https://github.com/SKindij/Database-Handbook/tree/main/MongoDB/AGGREGATION#design)
 
 
 ## 📚 What is schema design?
-* 📖 Schema design patterns
-* 📖 Normalization vs. denormalization
-* 📖 Embedded vs. referenced documents
-* 📖 Replication and Sharding
+* 📖 [Schema design patterns]https://github.com/SKindij/Database-Handbook/tree/main/MongoDB/Schema-Design#patterns)
+* 📖 [Normalization vs. denormalization]https://github.com/SKindij/Database-Handbook/tree/main/MongoDB/Schema-Design#normalization)
+* 📖 [Embedded vs. referenced documents]https://github.com/SKindij/Database-Handbook/tree/main/MongoDB/Schema-Design#documents)
+* 📖 [Replication and Sharding]https://github.com/SKindij/Database-Handbook/tree/main/MongoDB/Schema-Design#sharding)
 
 
 ## 📚 What is replication?
@@ -76,9 +75,10 @@ MongoDB is a popular **NoSQL database** that stores data in JSON-like documents.
 * 📖 Advanced Topics
 
 
-## 📚 Geospatial indexing and querying
-* 📖 Text search
-* 📖 MapReduce
-* 📖 Transactions
-* 📖 Change streams
+## 📚 MongoDB Security
+* 📖 Authentication
+* 📖 Authorization
+* 📖 Encryption
+* 📖 Auditing
+* 📖 Other Best Practices
 
