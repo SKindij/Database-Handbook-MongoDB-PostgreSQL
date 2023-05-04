@@ -11,22 +11,37 @@ They work similarly to the indexes found in a book, where you can quickly locate
 To see which index is being used for a specific query, you can use the ``explain()`` method. 
 
 ## <a name="types"></a>📖 Index types
-+ Single Field: Index based on a single field in the documents.
-+ Compound: Index based on multiple fields in the documents.
-+ Multikey: Index used when the indexed field contains an array of values.
-+ Text: Index used to support text search queries on string content.
-+ 2dsphere: Index used to support geospatial queries on spherical data.
-+ 2d: Index used to support geospatial queries on planar data.
++ Single Field: Index based on a single field in the documents:
++ Compound: Index based on multiple fields in the documents:
++ Multikey: Index used when the indexed field contains an array of values:
++ Text: Index used to support text search queries on string content:
++ 2dsphere: Index used to support geospatial queries on spherical data:
++ 2d: Index used to support geospatial queries on planar data:
 
 > ```javascript
->  // create single-field index on "name" field
->  db.collection('witcherCharacters').createIndex({ name: 1 });
+>  // if you frequently query collection by name,
+>  // create single-field index on "name" field to improve performance of those queries
+>    db.witcherCharacters.createIndex({ name: 1 });
 >  
+>  // if you frequently query by both "profession" and "status" fields
 >  // create compound index on "profession" and "status" fields
->  db.collection('witcherCharacters').createIndex({ profession: 1, status: 1 });
+>    db.witcherCharacters.createIndex({ profession: 1, status: 1 });
 >  
->  // create geospatial index on "location" field
->  db.collection('witcherMonsters').createIndex({ location: '2dsphere' });
+>  // suppose "witcherMonsters" has large number of docs and each document has array of "tags"
+>  // if you frequently query based on those tags, and array may contain multiple values
+>    db.witcherMonsters.createIndex({ tags: 1 });
+>
+>  // suppose "witcherBooks" has large number of documents,
+>  // you frequently search for books based on keywords in "description" field
+>    db.witcherBooks.createIndex({ description: 'text' });
+>
+>  // suppose each document has "location" field containing latitude and longitude of monster
+>  // you frequently query for monsters within certain distance of a given point
+>    db.witcherMonsters.createIndex({ location: '2dsphere' });
+>
+>  // suppose each document has "location" field containing x and y coordinates of character
+>  // tou frequently query for characters within certain distance of a given point
+>    db.witcherCharacters.createIndex({ location: '2d' });
 > ```
 > > _It’s important to choose right type of index for queries you will be running on your MongoDB collection._
 
