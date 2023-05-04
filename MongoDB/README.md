@@ -53,11 +53,12 @@ MongoDB is a popular **NoSQL database** that stores data in JSON-like documents.
 * 📖 [Grouping and sorting data](https://github.com/SKindij/Database-Handbook/tree/main/MongoDB/AGGREGATION#sorting)
 
 
-## 📚 What is schema design?
-* 📖 [Schema design patterns](https://github.com/SKindij/Database-Handbook/tree/main/MongoDB/Schema-Design#patterns)
-* 📖 [Normalization vs. denormalization](https://github.com/SKindij/Database-Handbook/tree/main/MongoDB/Schema-Design#normalization)
-* 📖 [Embedded vs. referenced documents](https://github.com/SKindij/Database-Handbook/tree/main/MongoDB/Schema-Design#documents)
-* 📖 [Replication and Sharding](https://github.com/SKindij/Database-Handbook/tree/main/MongoDB/Schema-Design#sharding)
+## 📚 Schema design patterns
+* 📖 [Embedded Data Model](https://github.com/SKindij/Database-Handbook/tree/main/MongoDB/Schema-Design#embedded)
+* 📖 [Normalized Data Model](https://github.com/SKindij/Database-Handbook/tree/main/MongoDB/Schema-Design#normalized)
+* 📖 Hybrid Data Model
+* 📖 [Subset Data Model](https://github.com/SKindij/Database-Handbook/tree/main/MongoDB/Schema-Design#subset)
+* 📖 [Metadata Data Model](https://github.com/SKindij/Database-Handbook/tree/main/MongoDB/Schema-Design#metadata)
 
 
 ## 📚 What is replication?
