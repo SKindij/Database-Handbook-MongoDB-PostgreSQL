@@ -68,13 +68,36 @@
 >  }
 > ```
 
+## 📖 Hybrid Data Model
+* you can combine the embedded and normalized data models to suit your specific needs;
+* useful when you have complex data relationships and need to balance benefits of denormalization with drawbacks of data duplication; 
+
+## <a name="subset"></a>📖 Subset Data Model
+* you can store a subset of the data from one or more documents in a separate collection, typically for performance reasons; 
+* this is useful when you have large or frequently accessed fields that are not needed for most queries;
+
+> you could create a separate collection for the combat statistics of each Witcher
+> ```javascript
+>  // witchers collection
+>  {
+>     "_id": ObjectId("witcher_id"),
+>     "name": "Geralt of Rivia",
+>     "level": 60
+>  }
+>  
+>  // witcher_combat_stats collection
+>  {
+>     "_id": ObjectId("witcher_id"),
+>     "kills": 200,
+>     "deaths": 0,
+>     "victories": 20
+>  }
+> ```
+
 ## <a name=""></a>📖 
 &ensp; 
 
 
-
-## <a name=""></a>📖 
-&ensp; 
 
 
 
