@@ -74,6 +74,29 @@
 + ``$push`` - adds a value to an array:
 + ``$addToSet`` - adds a value to an array only if it does not already exist in the array:
 
+> ```javascript
+>  // you can find total amount of rewards paid out in Witcher contracts
+>  db.contracts.aggregate([ { $group : { _id : null, total_rewards: { $sum: "$reward" } } } ])
+>
+>  // you can find average level of Witchers
+>  db.witchers.aggregate([ { $group : { _id : null, average_level: { $avg: "$level" } } } ])
+>
+>  // you can find the highest level among all Witchers
+>  db.witchers.aggregate([ { $group : { _id : null, highest_level: { $max: "$level" } } } ])
+>
+>  // you can find the lowest level among all Witchers
+>  db.witchers.aggregate([ { $group : { _id : null, lowest_level: { $min: "$level" } } } ])
+>
+>  //  you can add names of all Witchers who completed particular contract to array
+>  db.contracts.aggregate([
+>    { $match : { _id : ObjectId("contract_id") } },
+>    { $group : { _id : "$_id", witchers : { $push : "$witcher" } } }
+>  ])
+>
+>  // you can add unique locations where Witcher contracts have taken place to array
+>  db.contracts.aggregate([ { $group : { _id : null, unique_locations : { $addToSet : "$location" } } } ])
+> ```
+
 ## <a name="sorting"></a>📖 Grouping and sorting data
 + ``$group`` stage is used to group documents by specified field and calculate aggregate values for each group. 
 +  ``$sort`` stage can be used to sort the documents based on one or more fields.
