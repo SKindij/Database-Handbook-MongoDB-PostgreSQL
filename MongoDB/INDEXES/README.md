@@ -46,10 +46,26 @@ To see which index is being used for a specific query, you can use the ``explain
 > > _It’s important to choose right type of index for queries you will be running on your MongoDB collection._
 
 ## <a name="optimization"></a>📖 Query Optimization
-&ensp; 
+&ensp; It is a crucial aspect to ensure efficient and fast retrieval of data. The **query optimizer** helps in the selection of the appropriate query plan, enabling MongoDB to execute queries efficiently. The query optimizer’s primary goal is to minimize the number of documents to be read or scanned, consequently reducing the overall execution time.
 
+&ensp; One of the most important techniques for optimizing query performance is the use of indexes. They improve query performance by minimizing the number of documents to be scanned, thus reducing the overall execution time.\
 
-&ensp; 
+&ensp; MongoDB provides the ``explain()`` method, which is an essential tool for understanding the behavior and performance of your queries. By using ``explain()``, you can identify the query plan used, evaluate the effectiveness of an index, and debug queries.
+> ```javascript
+>  // query the "witcherCharacters" collection and explain how it's executed
+>  const query = { status: 'alive', profession: 'witcher' };
+>  const cursor = db.witcherCharacters.find(query).explain();
+>  
+>  // print the explain output to the console
+>  printjson(cursor);
+> ```
 
+&ensp; The **MongoDB profiler** is a feature that allows you to track the performance of MongoDB operations. It can help you identify slow or inefficient queries, and optimize your database by providing information on how queries are executed and how long they take to run. **Profiler** can be configured to collect data on all operations, or only those that take longer than a specified threshold. 
+&ensp; There are three different levels of profiling:
+- 0: Profiling is off
+- 1: Collects data on slow operations only
+- 2: Collects data on all operations
 
-
+&ensp; To optimize queries, you can apply limits and use projections in your queries. 
++ **Limits** allow you to restrict the number of documents returned during a query, which eventually reduces the amount of data transferred between the server and your application.
++ **Projections** allow you to specify the fields to return in the query results. This means that only the required fields are retrieved, thus reducing the overall document size and improving the query performance.
