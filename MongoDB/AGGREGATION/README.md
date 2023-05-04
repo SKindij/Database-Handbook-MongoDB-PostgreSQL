@@ -28,6 +28,57 @@
 + ``$group`` stage is used to group documents by specified field and calculate aggregate values for each group. 
 +  ``$sort`` stage can be used to sort the documents based on one or more fields.
 
+> Let's say you have a collection called "witcher_characters" with documents that look like this:
+> > ```javascript
+> >  {
+> >    "_id": ObjectId("6092b8f30c3d3d3a78d1c573"),
+> >    "name": "Geralt of Rivia",
+> >    "race": "Witcher",
+> >    "gender": "Male",
+> >    "affiliations": ["The Witchers", "The School of the Wolf"]
+> >  },
+> >  {
+> >    "_id": ObjectId("6092b8f30c3d3d3a78d1c574"),
+> >    "name": "Yennefer of Vengerberg",
+> >    "race": "Mage",
+> >    "gender": "Female",
+> >    "affiliations": ["The Lodge of Sorceresses"]
+> >  },
+> >  {
+> >    "_id": ObjectId("6092b8f30c3d3d3a78d1c575"),
+> >    "name": "Ciri",
+> >    "race": "Human",
+> >    "gender": "Female",
+> >    "affiliations": ["The Witchers", "The School of the Wolf"]
+> >  },
+> >  {
+> >    "_id": ObjectId("6092b8f30c3d3d3a78d1c576"),
+> >    "name": "Triss Merigold",
+> >    "race": "Mage",
+> >    "gender": "Female",
+> >    "affiliations": ["The Lodge of Sorceresses"]
+> >  }
+> > ```
+> You want to group the characters by race and calculate the total number of characters for each race, and then sort the results in descending order by the total number of characters:
+> > ```javascript
+> >  db.witcher_characters.aggregate([
+> >    {
+> >      $group: {
+> >        _id: "$race",
+> >        count: { $sum: 1 }
+> >      }
+> >    },
+> >    {
+> >      $sort: { count: -1 }
+> >    }
+> >  ])
+> > ```
+> This pipeline would output the following results:
+> > ```javascript
+> >  { "_id" : "Mage", "count" : 2 }
+> >  { "_id" : "Human", "count" : 1 }
+> >  { "_id" : "Witcher", "count" : 1 }
+> > ```
 
 
 ## <a name="design"></a>📖 Schema Design
