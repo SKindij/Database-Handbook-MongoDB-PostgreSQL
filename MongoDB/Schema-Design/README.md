@@ -10,7 +10,7 @@
 * you can embed one or more documents inside another document, creating a nested or hierarchical structure;
 * it is useful when you have one-to-many relationship between two entities and when you need to access related data in single query;
 
-> in context of "Witcher" universe, you could embed contracts for each Witcher within Witcher document
+> _in context of "Witcher" universe, you could embed contracts for each Witcher within Witcher document_
 > ```javascript
 >  {
 >     "_id": ObjectId("witcher_id"),
@@ -37,7 +37,7 @@
 * you can store related data in separate collections and reference them using unique identifiers, also known as foreign keys;
 * useful when you have many-to-many relationship between two entities and when you need to update or delete related data without affecting original document; 
 
-> you could create separate collection for contracts and reference them in Witcher document using their ObjectId
+> _you could create separate collection for contracts and reference them in Witcher document using their ObjectId_
 > ```javascript
 >  // witchers collection
 >  {
@@ -76,7 +76,7 @@
 * you can store a subset of the data from one or more documents in a separate collection, typically for performance reasons; 
 * this is useful when you have large or frequently accessed fields that are not needed for most queries;
 
-> you could create a separate collection for the combat statistics of each Witcher
+> _you could create a separate collection for the combat statistics of each Witcher_
 > ```javascript
 >  // witchers collection
 >  {
@@ -94,10 +94,32 @@
 >  }
 > ```
 
-## <a name=""></a>📖 
-&ensp; 
+## <a name="metadata"></a>📖 Metadata Data Model
+* to store metadata about document, such as creation or modification timestamps, access control information, or auditing logs;
+* useful when you need to track changes to a document over time, enforce security policies, or troubleshoot issues;
 
-
-
-
-
+> _you could add a metadata field to each Witcher document_
+> ```javascript
+>  {
+>     "_id": ObjectId("witcher_id"),
+>     "name": "Geralt of Rivia",
+>     "level": 60,
+>     "metadata": {
+>        "created_at": ISODate("2023-05-04T00:00:00.000Z"),
+>        "updated_at": ISODate("2023-05-04T00:00:00.000Z"),
+>        "created_by": "admin",
+>        "updated_by": "admin",
+>        "access_control": {
+>           "read": ["admin", "user"],
+>           "write": ["admin"]
+>        },
+>        "audit_log": [
+>           {
+>              "timestamp": ISODate("2023-05-04T00:00:00.000Z"),
+>              "user": "admin",
+>              "action": "create"
+>           }
+>        ]
+>     }
+>  }
+> ```
