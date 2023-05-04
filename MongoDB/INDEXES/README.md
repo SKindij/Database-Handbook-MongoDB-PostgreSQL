@@ -12,21 +12,20 @@ They work similarly to the indexes found in a book, where you can quickly locate
 
 
 ## <a name="types"></a>📖 Index types
-&ensp; 
++ Single Field: Index based on a single field in the documents.
++ Compound: Index based on multiple fields in the documents.
++ Multikey: Index used when the indexed field contains an array of values.
++ Text: Index used to support text search queries on string content.
++ 2dsphere: Index used to support geospatial queries on spherical data.
++ 2d: Index used to support geospatial queries on planar data.
 
-
-
-
-
-
-
-
+> _It’s important to choose right type of index for queries you will be running on your MongoDB collection._
 
 ## <a name="optimization"></a>📖 Query Optimization
 &ensp; 
 
 
-
+&ensp; 
 
 
 
