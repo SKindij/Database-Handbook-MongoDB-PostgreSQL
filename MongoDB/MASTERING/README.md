@@ -11,7 +11,12 @@
 &ensp; It is a **graphical user interface** (GUI) that simplifies the process of managing your MongoDB data. With [Compass](https://www.mongodb.com/products/compass), you can visually explore and interact with your data, modify and sort documents, create indexes, and validate data schemas for better data governance.
 
 ### VS Code Extension
-
+&ensp; It provides a convenient and powerful way to work with MongoDB databases directly from [VS Code](https://marketplace.visualstudio.com/items?itemName=mongodb.mongodb-vscode). This extension allows you to effortlessly manage your MongoDB databases, perform CRUD operations, and visualize your data schema within the VS Code environment. 
+* Once connected, you can explore your databases and collections directly from within the VS Code Explorer panel.
+* It provides a rich query editor that allows you to build and run queries against your MongoDB databases.
+* You can add, update, and delete documents directly from within VS Code.
+* It provides functionality for exporting and importing data to and from your MongoDB databases.
+* It provides IntelliSense support for working with MongoDB, making it easier to write code that interacts with your databases.
 
 ### MongoDB Atlas
 &ensp; It is a fully-managed **cloud-based database platform** offering the best of MongoDB. Its intuitive interface provides an effortless deployment experience, automated backups, self-healing recovery, and many other features that make [Atlas](https://www.mongodb.com/atlas/database) an ideal choice for database management.
@@ -40,6 +45,7 @@
 
 &ensp; **Studio 3T** is a powerful, feature-rich MongoDB management tool that provides a comprehensive set of tools and features for MongoDB management and development. [Studio 3T](https://studio3t.com/) offers advanced features such as IntelliShell, Query Code, and SQL Migration.
 
+- - -
 
 ## <a name=""></a>📖 Transactions
 
