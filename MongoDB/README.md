@@ -61,6 +61,23 @@ MongoDB is a popular **NoSQL database** that stores data in JSON-like documents.
 * 📖 [Metadata Data Model](https://github.com/SKindij/Database-Handbook/tree/main/MongoDB/Schema-Design#metadata)
 
 
+## 📚 Mastering MongoDB
+* 📖 [Developer Tools]()
+  + MongoDB Shell (mongo)
+  + MongoDB Compass
+  + VS Code Extension
+  + MongoDB Atlas
+  + Connectors APIs and Drivers
+  + Studio 3T (MongoChef GUI)
+* 📖 [Transactions]()
+  + Overview
+  + Usage
+  + Limitations
+* 📖 [Scaling Strategies]()
+  + Horizontal Scaling
+  + Vertical Scaling
+
+
 ## 📚 What is replication?
 * 📖 Replica set configuration
 * 📖 Automatic failover
