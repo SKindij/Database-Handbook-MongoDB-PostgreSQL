@@ -1,7 +1,7 @@
 # 📚 Mastering MongoDB
 &ensp; They aim to help you manage, interact, and visualize your data to make development tasks quicker and easier.
 
-## <a name=""></a>📖 Developer Tools
+## <a name="tools"></a>📖 Developer Tools
 
 ### MongoDB Shell (mongo)
 &ensp; It is a **command-line interface** (CLI) that allows you to interact with a MongoDB instance. It is still a popular tool among developers, especially for tasks like querying data, CRUD operations and performing administrative tasks.\
@@ -47,7 +47,7 @@
 
 - - -
 
-## <a name=""></a>📖 Transactions
+## <a name="transactions"></a>📖 Transactions
 
 Overview
 
@@ -62,7 +62,7 @@ Limitations
 
 
 
-## <a name=""></a>📖 Scaling Strategies
+## <a name="scaling"></a>📖 Scaling Strategies
 
 Horizontal Scaling
 
