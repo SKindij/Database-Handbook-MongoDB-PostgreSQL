@@ -48,14 +48,61 @@
 - - -
 
 ## <a name="transactions"></a>📖 Transactions
+&ensp; They play a vital role in maintaining data consistency and integrity within a database. They represent a single unit of work that consists of multiple operations executed in a sequence.
 
-Overview
+### Overview
+&ensp; MongoDB supports multi-document transactions, enabling you to perform multiple read and write operations across several documents within a single, atomic transaction. 
+A transaction might involve several operations, for instance:
+* Creating a new document
+* Updating an existing document
+* Deleting a document
+* Reading documents
+
+&ensp; The fundamental purpose of a transaction is to either execute all or none of its operations. This means that, in case any operation within the transaction fails, the entire transaction will be aborted, and the database will return to its initial state, thus ensuring data consistency.
+
+&ensp; Transactions in MongoDB are essential to achieve the following ACID properties:
++ Atomicity: Ensures that either all the operations in the transaction are executed, or none are.
++ Consistency: Guarantees that, upon completing a transaction, the database remains in a consistent state.
++ Isolation: Secures that the operations within the transaction are isolated from other transactions being executed simultaneously.
++ Durability: Warrants that once a transaction is successfully completed, its effects will be stored persistently in the database.
+
+### Usage
+&ensp; To begin a transaction in MongoDB, you’ll need to obtain a session and then start the transaction using the startTransaction() method. After performing the necessary operations, you may commit the transaction to apply the changes to the database, or abort to discard the changes.
+
+> Here are a few examples related to "The Witcher" universe:\
+> Example 1: Creating transaction to add new Witcher and update their current location
+> > ```javascript
+> >  const session = await mongoose.startSession();
+> >    session.startTransaction();
+> >  
+> >  try {
+> >      const newWitcher = new Witcher({
+> >        name: 'Geralt of Rivia',
+> >        age: 100,
+> >        gender: 'Male'
+> >      });
+> >      const savedWitcher = await newWitcher.save({ session });  
+> >      const updatedLocation = await Location.findOneAndUpdate(
+> >          { name: 'Kaer Morhen' },
+> >          { $push: { witchers: savedWitcher._id } },
+> >          { new: true, session }
+> >      ); 
+> >      await session.commitTransaction();
+> >      session.endSession();
+> >      console.log('Successfully added new Witcher and updated their current location!');
+> >  } catch (error) {
+> >      await session.abortTransaction();
+> >      session.endSession();
+> >      console.error('Error adding new Witcher and updating their current location:', error);
+> >  }
+> > ```
 
 
-Usage
 
 
-Limitations
+
+
+### Limitations
 
 
 
