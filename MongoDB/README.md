@@ -8,6 +8,7 @@ MongoDB is a popular **NoSQL database** that stores data in JSON-like documents.
 > * There are many **online tutorials and videos** available on platforms like **YouTube and Udemy** that can help you learn MongoDB. These resources often provide step-by-step instructions and real-world examples to help you understand the concepts better.
 > * The **MongoDB community** is very active and helpful. You can ask questions and get answers from other users and experts on the MongoDB community forums.
 
+
 ## 📚 Introduction to MongoDB
 * 📖 [What is MongoDB?](https://github.com/SKindij/Database-Handbook/tree/main/MongoDB/INTRO#basics)
   + Advantages of using MongoDB
@@ -78,19 +79,9 @@ MongoDB is a popular **NoSQL database** that stores data in JSON-like documents.
   + Vertical Scaling
 
 
-## 📚 What is replication?
-* 📖 Replica set configuration
-* 📖 Automatic failover
-* 📖 What is sharding?
-* 📖 Sharded cluster configuration
-* 📖 Administration and Deployment
-
-## 📚 Backup and restore
-* 📖 Security and authentication
-* 📖 Performance tuning
-* 📖 Monitoring and logging
-* 📖 Deployment strategies
-* 📖 Advanced Topics
+## 📚 Backup and Recovery
+* 📖 [mongodump]()
+* 📖 [mongorestore]()
 
 
 ## 📚 MongoDB Security
@@ -98,5 +89,4 @@ MongoDB is a popular **NoSQL database** that stores data in JSON-like documents.
 * 📖 Authorization
 * 📖 Encryption
 * 📖 Auditing
-* 📖 Other Best Practices
-
+* 📖 Best Practices
