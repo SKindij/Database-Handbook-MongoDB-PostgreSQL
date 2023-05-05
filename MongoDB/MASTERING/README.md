@@ -97,10 +97,52 @@ A transaction might involve several operations, for instance:
 > >  }
 > > ```
 
+> Example 2: Creating a transaction to add new monster and deduct coins from Witcher's purse
+> > ```javascript
+> >  const session = await mongoose.startSession();
+> >    session.startTransaction();
+> >  
+> >  try {
+> >      const newMonster = new Monster({
+> >          name: 'Striga',
+> >          threatLevel: 'High',
+> >          location: 'Vizima'
+> >      });
+> >      const savedMonster = await newMonster.save({ session });
+> >      const witcher = await Witcher.findOneAndUpdate(
+> >          { name: 'Geralt of Rivia' },
+> >          { $inc: { coins: -500 } },
+> >          { new: true, session }
+> >      );
+> >      await session.commitTransaction();
+> >      session.endSession();
+> >      console.log(`Successfully added new monster ${savedMonster.name} and deducted 500 coins from ${witcher.name}'s purse!`);
+> >  } catch (error) {
+> >      await session.abortTransaction();
+> >      session.endSession();
+> >      console.error('Error adding new monster and deducting coins:', error);
+> >    }
+> > ```
 
-
-
-
+> Example 3: Creating a transaction to delete a Witcher and all of their associated contracts and payments
+> > ```javascript
+> >  const session = await mongoose.startSession();
+> >    session.startTransaction();
+> >  
+> >  try {
+> >      const witcher = await Witcher.findOne({ name: 'Eskel' }).session(session);
+> >        await Contract.deleteMany({ witcher: witcher._id }).session(session);
+> >        await Payment.deleteMany({ witcher: witcher._id }).session(session);
+> >        await Witcher.findByIdAndDelete(witcher._id).session(session);
+> >      await session.commitTransaction();
+> >      session.endSession();
+> >      console.log(`Successfully deleted Witcher ${witcher.name} and all of their associated contracts and payments!`);
+> >  } catch (error) {
+> >      await session.abortTransaction();
+> >      session.endSession();
+> >      console.error('Error deleting Witcher and associated contracts and payments:', error);
+> >  }
+> > ```
 
 ### Limitations
 
