@@ -160,11 +160,13 @@ A transaction might involve several operations, for instance:
 > > ```
 
 ### Limitations
+* They are available only in MongoDB versions 4.0 and above.
+* They can cause performance overhead, especially for write-heavy workloads.
+* In MongoDB clusters, transactions only support a maximum duration of 60 seconds.
 
+&ensp; In summary, transactions are a powerful feature of MongoDB, ensuring data integrity, and consistency in the database. By understanding their usage and implications, you can effectively utilize them in your application according to your specific requirements.
 
-
-
-
+- - -
 
 ## <a name="scaling"></a>📖 Scaling Strategies
 
