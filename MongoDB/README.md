@@ -73,13 +73,13 @@ MongoDB is a popular **NoSQL database** that stores data in JSON-like documents.
 
 
 ## 📚 Backup and Recovery
-* 📖 [mongodump]()
-* 📖 [mongorestore]()
+* 📖 [mongodump](https://github.com/SKindij/Database-Handbook/tree/main/MongoDB/Backup-Recovery#mongodump)
+* 📖 [mongorestore](https://github.com/SKindij/Database-Handbook/tree/main/MongoDB/Backup-Recovery#mongorestore)
 
 
 ## 📚 MongoDB Security
-* 📖 [Authentication]()
+* 📖 [Authentication](https://github.com/SKindij/Database-Handbook/tree/main/MongoDB/SECURITY#authentication)
 * 📖 Authorization
-* 📖 [Encryption]()
+* 📖 [Encryption](https://github.com/SKindij/Database-Handbook/tree/main/MongoDB/SECURITY#encryption)
 * 📖 Auditing
-* 📖 [Best Practices]()
+* 📖 [Best Practices](https://github.com/SKindij/Database-Handbook/tree/main/MongoDB/SECURITY#practices)
