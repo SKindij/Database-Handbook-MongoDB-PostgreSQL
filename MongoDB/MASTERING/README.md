@@ -169,11 +169,29 @@ A transaction might involve several operations, for instance:
 - - -
 
 ## <a name="scaling"></a>📖 Scaling Strategies
+&ensp;Scaling is crucial for maintaining high performance and availability of your database, especially as your application and its data grow.
 
-Horizontal Scaling
+### Horizontal Scaling
+&ensp;It refers to the process of adding more servers to a system to share the workload evenly.
+
+#### Sharding
+&ensp; It is a method of spreading data across multiple servers, allowing MongoDB to scale out and manage large amounts of data. Sharding enables you to partition your data and distribute it across several machines, ensuring that no single machine is overwhelmed with data or queries. With the use of a shard key, MongoDB automatically distributes data across the multiple machines.
+
+&ensp; Components of Sharding
++ Shard: 
+  * single server or a replica set that stores a portion of the sharded data.
++ Config Server: 
+  * server or a replica set that stores metadata about the sharded clusters. 
+  * config server tracks which data is stored on which shard.
++ Query Router (mongos): 
+  * server that routes the application queries to the appropriate shard based on the metadata obtained from the config server.
 
 
-Vertical Scaling
+### Vertical Scaling
+&ensp; It involves increasing the resources available on individual servers, such as CPU, memory, and storage. This can be done by adding more resources to existing servers or by upgrading to more powerful servers.
+
+#### Replica Sets
+
 
 
 
