@@ -30,11 +30,28 @@ Key concepts to understand include:
 
 
 ## <a name=""></a>📖 Encryption
+&ensp; It helps protect data stored in MongoDB, both at rest and during transit. MongoDB provides the following encryption options:
++ TLS/SSL: 
+  * Transport Layer Security (TLS) or Secure Sockets Layer (SSL) can be used to encrypt communication between the MongoDB client and server, ensuring data integrity and confidentiality during transit.
++ Encryption at Rest: 
+  * MongoDB Enterprise offers the ability to encrypt data on disk using native encryption. 
+  * This feature encrypts the data files and their backups, providing an additional layer of security.
 
+&ensp; Properly implementing encryption measures helps safeguard data from unauthorized access, both while in transit and when stored on disk.
 
 
 ## <a name=""></a>📖 Auditing
+&ensp; It involves monitoring and recording activities within a MongoDB deployment. MongoDB provides auditing features that allow you to track events such as authentication attempts, database operations, and system activities.\
+Some key auditing capabilities include:
++ Audit Logs: 
+  * MongoDB can generate detailed audit logs containing information about authentication, authorization, and other activities. 
+  * These logs can be used for compliance, troubleshooting, and security analysis.
++ Fine-Grained Auditing: 
+  * MongoDB allows you to configure audit filters to focus on specific events or activities of interest, enabling more targeted auditing.
++ Integration with SIEM Tools: 
+  * MongoDB audit logs can be integrated with Security Information and Event Management (SIEM) tools for centralized monitoring and analysis.
 
+&ensp; By enabling auditing, you can gain visibility into your MongoDB deployment, detect suspicious activities, and meet regulatory compliance requirements.
 
 
 ## <a name=""></a>📖 Best Practices
