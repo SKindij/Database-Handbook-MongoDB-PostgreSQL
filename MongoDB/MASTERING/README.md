@@ -72,25 +72,40 @@ A transaction might involve several operations, for instance:
 > Here are a few examples related to "The Witcher" universe:\
 > Example 1: Creating transaction to add new Witcher and update their current location
 > > ```javascript
+> >  // start by creating new session
+> >  // session will be used to group operations of our transaction
 > >  const session = await mongoose.startSession();
+> >    // this marks start of our atomic operation
 > >    session.startTransaction();
 > >  
 > >  try {
+> >    // create new Witcher object with desired properties 
 > >      const newWitcher = new Witcher({
 > >        name: 'Geralt of Rivia',
 > >        age: 100,
 > >        gender: 'Male'
 > >      });
-> >      const savedWitcher = await newWitcher.save({ session });  
+> >      // save 'newWitcher' to 'witchers' collection
+> >   // session is passed as option to ensure that operation is performed within transaction
+> >      const savedWitcher = await newWitcher.save({ session }); 
+> >      // update locations collection
 > >      const updatedLocation = await Location.findOneAndUpdate(
+> >          // to find location document with name
 > >          { name: 'Kaer Morhen' },
+> >          // to add new ID to witchers array in location document
 > >          { $push: { witchers: savedWitcher._id } },
+> >          // ensure that we receive updated location document as result
 > >          { new: true, session }
 > >      ); 
+> >     // if all operations are successful, we call this to commit transaction
+> >     // this will persist all changes made within transaction to database
 > >      await session.commitTransaction();
+> >      // we call this to end session
 > >      session.endSession();
 > >      console.log('Successfully added new Witcher and updated their current location!');
+> >  // if error occurs at any point within transaction, we catch it
 > >  } catch (error) {
+> >      // to roll back any changes made within transaction
 > >      await session.abortTransaction();
 > >      session.endSession();
 > >      console.error('Error adding new Witcher and updating their current location:', error);
