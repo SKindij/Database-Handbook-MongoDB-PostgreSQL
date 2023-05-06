@@ -1,7 +1,7 @@
 # 📚 MongoDB Security
 &ensp; Security is crucial for protecting your data and keeping unauthorized access at bay.
 
-## <a name=""></a>📖 Authentication
+## <a name="authentication"></a>📖 Authentication
 &ensp; It involves verifying the identity of users or applications trying to access the database.\
 MongoDB supports several authentication mechanisms, including:
 + SCRAM (Salted Challenge Response Authentication Mechanism): 
@@ -14,7 +14,7 @@ MongoDB supports several authentication mechanisms, including:
 
 &ensp; When setting up authentication, it is crucial to create strong passwords, avoid using default credentials, and regularly rotate passwords to enhance security.
 
-## <a name=""></a>📖 Authorization
+## 📖 Authorization
 &ensp; It determines the level of access users or applications have to the database and its resources. MongoDB provides flexible authorization controls using Role-Based Access Control (RBAC).\
 Key concepts to understand include:
 + Roles: 
@@ -29,7 +29,7 @@ Key concepts to understand include:
 &ensp; By properly configuring authorization, you can limit access to sensitive data and ensure that users have only the necessary permissions.
 
 
-## <a name=""></a>📖 Encryption
+## <a name="encryption"></a>📖 Encryption
 &ensp; It helps protect data stored in MongoDB, both at rest and during transit. MongoDB provides the following encryption options:
 + TLS/SSL: 
   * Transport Layer Security (TLS) or Secure Sockets Layer (SSL) can be used to encrypt communication between the MongoDB client and server, ensuring data integrity and confidentiality during transit.
@@ -40,7 +40,7 @@ Key concepts to understand include:
 &ensp; Properly implementing encryption measures helps safeguard data from unauthorized access, both while in transit and when stored on disk.
 
 
-## <a name=""></a>📖 Auditing
+## 📖 Auditing
 &ensp; It involves monitoring and recording activities within a MongoDB deployment. MongoDB provides auditing features that allow you to track events such as authentication attempts, database operations, and system activities.\
 Some key auditing capabilities include:
 + Audit Logs: 
@@ -54,7 +54,7 @@ Some key auditing capabilities include:
 &ensp; By enabling auditing, you can gain visibility into your MongoDB deployment, detect suspicious activities, and meet regulatory compliance requirements.
 
 
-## <a name=""></a>📖 Best Practices
+## <a name="practices"></a>📖 Best Practices
 + Keep MongoDB Updated: 
   * Stay up to date with the latest MongoDB versions, as they often include security patches and improvements.
 + Secure Network Access: 
