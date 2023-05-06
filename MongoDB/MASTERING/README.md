@@ -191,7 +191,11 @@ A transaction might involve several operations, for instance:
 &ensp; It involves increasing the resources available on individual servers, such as CPU, memory, and storage. This can be done by adding more resources to existing servers or by upgrading to more powerful servers.
 
 #### Replica Sets
-
-
-
-
+&ensp; Although not exclusively a vertical scaling method, using replica sets can also help increase the performance and availability of your MongoDB deployment. A replica set is a group of MongoDB servers that maintain the same data set, providing redundancy and increasing data availability.
++ Primary Node: 
+  * they processes all the write operations and can also process read operations.
++ Secondary Nodes: 
+  * they replicate the data stored in the primary node and can serve read operations;
+  * they can be promoted to the primary role if the primary node experiences a failure.
++ Arbiter Nodes (optional): 
+  * they do not store any data but participate in the election process for primary node selection, preventing split-brain scenarios.
