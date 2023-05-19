@@ -17,6 +17,36 @@ It is especially useful when you want to export data from MongoDB instances, clu
   * By default, mongodump performs backups in a manner that ensures a consistent snapshot of the data. 
   * It uses a database-level read lock during the backup process to prevent any changes to the data while the backup is being created.
 
+### How it work
+&ensp;Mongodump connects to a running **mongod** or **mongos** process and extracts the **BSON data** from the database, which includes collections, their documents, and indexes. The tool stores the exported data in a binary format in a directory named **dump** by default, with each collection’s data placed inside a separate BSON file.
+
+> _Here’s a basic example of using mongodump:_
+> > ```perl
+> >  mongodump --uri "mongodb://username:password@host:port/database" --out /path/to/output/dir
+> > ```
+>  - _Replace the values for username, password, host, port, and database with your actual MongoDB credentials and target database._
+>  - _This command will create a backup of your specified database and will store it in the specified output directory._
+
+Mongodump offers a variety of options to customize your backups:
+* --uri: connection string with authentication details.
+* --out: path to save the output data.
+* --db: specific database to backup.
+* --collection: specific collection to backup.
+* --query: optional query to export only matching documents.
+* --oplog: data for a consistent point-in-time snapshot.
+* --gzip: compress the backup files using gzip.
+* --archive: write output to single archive file instead of individual files.
+
+> _Here’s a basic example of using mongorestore:_
+> > ```perl
+> >  mongorestore --uri "mongodb://username:password@host:port/database" --drop /path/to/backup/dir
+> > ```
+> _This command will restore the specified database from the backup directory, and the --drop flag will remove any existing data in the target database before restoring the data._
+
+
+
+
+
 
 ## <a name="mongorestore"></a>📖 mongorestore
 &ensp; It is a utility tool that comes with MongoDB and is used to restore a binary database dump from mongodump. 
