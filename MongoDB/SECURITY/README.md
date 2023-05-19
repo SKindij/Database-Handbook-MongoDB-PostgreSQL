@@ -4,10 +4,10 @@
 ## <a name="authentication"></a>📖 Authentication
 &ensp; It involves verifying the identity of users or applications trying to access the database.\
 MongoDB supports several authentication mechanisms, including:
-+ SCRAM (Salted Challenge Response Authentication Mechanism): 
++ **SCRAM (Salted Challenge Response Authentication Mechanism):** 
   * it is the default authentication mechanism in MongoDB;
   * it uses a username and password to authenticate users.
-+ x.509 certificates: 
++ **x.509 certificates:**
   * use it for authentication, where clients present valid certificate;
   * enables clients to verify each other’s authenticity using public key infrastructure (PKI);
   * > implementing
@@ -34,8 +34,11 @@ MongoDB supports several authentication mechanisms, including:
     - **Authenticate with the Client Certificate:**\
       > _use mongo shell command that includes client certificate and CA certificate files:_
       > `mongo --tls --tlsCertificateKeyFile /path/to/client.pem --tlsCAFile /path/to/ca.pem --authenticationDatabase '$external' --authenticationMechanism 'MONGODB-X509' --host hostname.example.com`
-+ LDAP (Lightweight Directory Access Protocol): 
++ **LDAP (Lightweight Directory Access Protocol):**
   * MongoDB can integrate with LDAP servers for authentication purposes.
+  * It is application protocol used for accessing and managing distributed directory information services over network.
+  * LDAP Proxy Authentication adds additional layer of security and simplifies user management process. 
+  * It allows MongoDB to delegate authentication process to LDAP server without storing user credentials in MongoDB server.
 
 
 
