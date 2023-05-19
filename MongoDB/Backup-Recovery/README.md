@@ -44,10 +44,6 @@ Mongodump offers a variety of options to customize your backups:
 > _This command will restore the specified database from the backup directory, and the --drop flag will remove any existing data in the target database before restoring the data._
 
 
-
-
-
-
 ## <a name="mongorestore"></a>📖 mongorestore
 &ensp; It is a utility tool that comes with MongoDB and is used to restore a binary database dump from mongodump. 
 It is particularly helpful in scenarios where you need to recover your database, migrate data between MongoDB instances, or manage your data backup strategy.
@@ -62,3 +58,48 @@ It is particularly helpful in scenarios where you need to recover your database,
 + Indexes and Metadata: 
   * When restoring a backup, mongorestore also restores the indexes and other metadata associated with the collections. 
   * This ensures that the restored data is in the same state as when it was backed up.
+
+> _Here’s a basic usage of mongorestore:_
+> > ```perl
+> >  mongorestore /path/to/your/dump/folder
+> > ```
+> _This command will restore the dump in the specified folder._
+
+Common Options
+* --host: target MongoDB instance (default: localhost)4
+* --port: port number of target MongoDB instance (default: 27017);
+* --username: username for authentication (if needed);
+* --password: password for authentication (if needed);
+* --authenticationDatabase: database that holds user’s credentials (default: admin);
+* --db: single database to restore (default: all databases in the dump folder);
+* --collection: single collection to restore (default: all collections in the dump folder);
+* --drop: drops database or collection before importing data;
+* --gzip: decompresses input BSON files before importing (use with compressed dumps);
+* --archive: Reads/writes the database dump as an archive file;
+* --nsExclude: exclude namespaces with specified pattern from restore.
+
+> Examples\
+>  - _Restore only a specific database:_
+> > ```shell
+> >  mongorestore --db=mydatabase /path/to/your/dump/folder
+> > ```
+>  - _Restore using gzip format:_
+> > ```shell
+> >  mongorestore --db=mydatabase /path/to/your/dump/folder
+> > ```
+>  - _Restore with authentication:_
+> > ```shell
+> >  mongorestore --username=myUser --password=myPassword /path/to/your/dump/folder
+> > ```
+>  - _Restore to a remote MongoDB instance:_
+> > ```shell
+> >  mongorestore --host=remoteHost --port=27017 /path/to/your/dump/folder
+> > ```
+
+
+
+
+
+
+
+
