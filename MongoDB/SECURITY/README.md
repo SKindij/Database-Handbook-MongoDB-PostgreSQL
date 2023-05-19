@@ -5,12 +5,47 @@
 &ensp; It involves verifying the identity of users or applications trying to access the database.\
 MongoDB supports several authentication mechanisms, including:
 + **SCRAM (Salted Challenge Response Authentication Mechanism):** 
-  * it is the default authentication mechanism in MongoDB;
-  * it uses a username and password to authenticate users.
+  * it is default authentication mechanism in MongoDB;
+  * you can create user accounts with usernames and passwords;
+  * implementing
+    - **Enable Authentication:**
+      > starting server with `--auth` option or configuring it in file (mongod.conf);
+    - **Create User Accounts:**
+      > with appropriate roles and privileges for your project;
+      > ``` javascript
+      > use admin
+      > db.createUser({
+      >   user: "username",
+      >   pwd: "password",
+      >   roles: [{ role: "readWrite", db: "your_database" }]
+      > })
+      > ```
+    - **Connect to MongoDB:**
+      > When connecting to MongoDB from your Node.js application, 
+      > use appropriate driver and provide connection string with username, password, and authentication database (where user account is defined);
+      > ```javascript
+      >  const { MongoClient } = require("mongodb");
+      > 
+      >  const uri = "mongodb://username:password@localhost:27017/?authSource=admin";
+      >  const client = new MongoClient(uri, { useUnifiedTopology: true });
+      >  
+      >  // connect to MongoDB
+      >  async function connectToMongoDB() {
+      >    try {
+      >      await client.connect();
+      >      console.log("Connected to MongoDB");
+      >    } catch (error) {
+       >     console.error("Failed to connect to MongoDB", error);
+      >    }
+      >  }
+      >  
+      >  // call connect function to establish connection
+      >  connectToMongoDB();
+      > ```
 + **x.509 certificates:**
   * use it for authentication, where clients present valid certificate;
   * enables clients to verify each other’s authenticity using public key infrastructure (PKI);
-  * > implementing
+  * implementing
     - **Obtain Certificates:**\
       > _Get an X.509 certificate (issued by single Certificate Authority) for server and each client that connects to MongoDB server._
     - **Configure MongoDB Server**: 
@@ -39,10 +74,11 @@ MongoDB supports several authentication mechanisms, including:
   * It is application protocol used for accessing and managing distributed directory information services over network.
   * LDAP Proxy Authentication adds additional layer of security and simplifies user management process. 
   * It allows MongoDB to delegate authentication process to LDAP server without storing user credentials in MongoDB server.
++ **Kerberos:**
+  * it provides strong authentication and is commonly used in enterprise environments;
 
 
-
-&ensp; When setting up authentication, it is crucial to create strong passwords, avoid using default credentials, and regularly rotate passwords to enhance security.
+&ensp; When setting up authentication, it is crucial to create strong passwords, avoid using default credentials, and regularly rotate passwords to enhance security. To enable authentication in MongoDB, you need to configure the server to require authentication and create user accounts with appropriate roles and privileges.
 
 ## 📖 Authorization
 &ensp; It determines level of access users or applications have to database and its resources. MongoDB provides flexible authorization controls using **Role-Based Access Control** (RBAC - allows you to assign roles to users or applications, controlling what operations they can perform.).
