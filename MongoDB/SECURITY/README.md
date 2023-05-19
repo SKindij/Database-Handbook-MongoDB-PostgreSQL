@@ -8,9 +8,36 @@ MongoDB supports several authentication mechanisms, including:
   * it is the default authentication mechanism in MongoDB;
   * it uses a username and password to authenticate users.
 + x.509 certificates: 
-  * use it for authentication, where clients present a valid certificate.
+  * use it for authentication, where clients present valid certificate;
+  * enables clients to verify each other’s authenticity using public key infrastructure (PKI);
+  * > implementing
+    - **Obtain Certificates:**\
+      > _Get an X.509 certificate (issued by single Certificate Authority) for server and each client that connects to MongoDB server._
+    - **Configure MongoDB Server**: 
+      > _To enable X.509 authentication, you’ll need to start MongoDB with following options:_\
+      > `mongod --tlsMode requireTLS --tlsCertificateKeyFile /path/to/server.pem --tlsCAFile /path/to/ca.pem --auth`
+    - **Create the User Administrator:**\
+      > _Use following command on admin database:_
+      > ``` javascript
+      >  db.getSiblingDB('$external').runCommand({
+      >    createUser:
+      >      'C=US,ST=New York,L=New York City,O=MongoDB,OU=kerneluser,CN=client@example.com',
+      >    roles: [
+      >      { role: 'userAdminAnyDatabase', db: 'admin' },
+      >     { role: 'clusterAdmin', db: 'admin' },
+      >      { role: 'readWriteAnyDatabase', db: 'admin' },
+      >      { role: 'dbAdminAnyDatabase', db: 'admin' },
+      >    ],
+      >    writeConcern: { w: 'majority', wtimeout: 5000 },
+      >  });
+      >  ```
+    - **Authenticate with the Client Certificate:**\
+      > _use mongo shell command that includes client certificate and CA certificate files:_
+      > `mongo --tls --tlsCertificateKeyFile /path/to/client.pem --tlsCAFile /path/to/ca.pem --authenticationDatabase '$external' --authenticationMechanism 'MONGODB-X509' --host hostname.example.com`
 + LDAP (Lightweight Directory Access Protocol): 
   * MongoDB can integrate with LDAP servers for authentication purposes.
+
+
 
 &ensp; When setting up authentication, it is crucial to create strong passwords, avoid using default credentials, and regularly rotate passwords to enhance security.
 
