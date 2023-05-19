@@ -15,18 +15,56 @@ MongoDB supports several authentication mechanisms, including:
 &ensp; When setting up authentication, it is crucial to create strong passwords, avoid using default credentials, and regularly rotate passwords to enhance security.
 
 ## 📖 Authorization
-&ensp; It determines the level of access users or applications have to the database and its resources. MongoDB provides flexible authorization controls using Role-Based Access Control (RBAC).\
-Key concepts to understand include:
-+ Roles: 
-  * built-in like read, readWrite, and userAdmin;
-  * you can create custom roles;
-+ Privileges: 
-  * they are granular permissions that can be assigned to roles;
-  * they include actions such as find, insert, update, remove, and more.
-+ Role-Based Access Control:
-  * RBAC allows you to assign roles to users or applications, controlling what operations they can perform.
+&ensp; It determines level of access users or applications have to database and its resources. MongoDB provides flexible authorization controls using **Role-Based Access Control** (RBAC - allows you to assign roles to users or applications, controlling what operations they can perform.).
 
-&ensp; By properly configuring authorization, you can limit access to sensitive data and ensure that users have only the necessary permissions.
+&ensp; Each role consists of a set of privileges that determine the user’s abilities within the system. MongoDB has several built-in roles, and you also have the option to create custom roles as needed. By assigning the appropriate roles to users, you can limit their access to various parts of the database and protect sensitive information.
+
+#### Built-in Roles
+* dbAdminAnyDatabase: Allows administrative tasks for all databases except for the local and config;
+* dbAdmin: allows administrative tasks, such as managing indexes and user-defined roles, for specified database;
+* userAdminAnyDatabase: allows managing user access for all databases except for local and config;
+* userAdmin: allows managing user access for specified database;
+* ClusterAdmin: allows administrative tasks for entire cluster, such as configuring replica sets and sharding;
+* Read: allows read operations on specified database;
+* ReadWrite: allows read and write operations on specified database;
+* ReadAnyDatabase: allows read operations on all databases except for local and config;
+* ReadWriteAnyDatabase: allows read and write operations on all databases except for local and config;
+
+#### Custom Roles
+&ensp; You can create custom roles to cater to specific requirements of your application. Custom roles can have any combination of built-in roles’ privileges and user-defined actions.
+
+> _Here’s an example:_
+> > ```javascript
+> >  use witcherWorld_db;
+> >  
+> >  db.createRole({
+> >    role: 'readMonsters',
+> >    privileges: [
+> >      {
+> >        resource: { db: 'witcherWorld_db', collection: 'monsters' },
+> >        actions: ['find', 'aggregate'],
+> >      },
+> >    ],
+> >    roles: [],
+> >  });
+> > ```
+
+#### Assigning Roles to Users
+&ensp; To ensure that users have the appropriate level of access and permissions, you assign specific roles to them. 
+
+> _Here’s an example:_
+> > ```javascript
+> >  db.createUser({
+> >    user: 'geralt77',
+> >    pwd: 'password123',
+> >    roles: [
+> >      { role: 'readMonsters', db: 'witcherWorld_db' },
+> >      { role: 'read', db: 'witcherWorld_db' },
+> >    ],
+> >  });
+> > ```
+
+&ensp; _By properly configuring authorization, you can limit access to sensitive data and ensure that users have only the necessary permissions._
 
 
 ## <a name="encryption"></a>📖 Encryption
