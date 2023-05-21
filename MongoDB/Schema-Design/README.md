@@ -1,4 +1,4 @@
-📚 Schema design patterns
+# 📚 Schema design patterns
 &ensp; It is an important consideration when using MongoDB. In general, you should design your schema based on how you plan to query the data. The aggregation pipeline can be used to reshape and transform data as needed for your queries.\
 &ensp; Here are some tips for schema design:
 * Denormalize data where appropriate to avoid the need for expensive joins.
