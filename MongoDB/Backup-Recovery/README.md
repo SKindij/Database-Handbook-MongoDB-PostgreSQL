@@ -1,5 +1,4 @@
-📚 Backup and Recovery
-&ensp; 
+# 📚 Backup and Recovery
 
 ## <a name="mongodump"></a>📖 mongodump
 &ensp; It is a utility tool that comes with MongoDB, which is used to create a backup of your data by capturing the BSON output from your MongoDB database. 
