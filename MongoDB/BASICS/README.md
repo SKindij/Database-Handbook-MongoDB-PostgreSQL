@@ -297,26 +297,26 @@ The basic syntax of the validate command is as follows: ``db.runCommand({validat
 
 &ensp; A write concern indicates the level of acknowledgment MongoDB should provide when writing data to the database. It ensures that the data has been successfully written and replicated before acknowledging the write operation.\
 &ensp; The different **write concern levels** are:
-+ w: 0: 
++ w: 0
   * _write operation is unacknowledged, which means MongoDB does not send any acknowledgment;_
   * _this level provides the lowest latency but carries the risk of losing data;_
-+ w: 1 (default): 
++ w: 1 (default)
   * _write operation is acknowledged after being successfully written to the primary node;_
   * _it does not guarantee replication to other replica set members;_
-+ w: majority: 
++ w: majority
   * _write operation is acknowledged after being written and replicated to a majority of replica set members;_
   * _this level provides better data durability but may have increased latency;_
-+ w: <number>: 
++ w: `<number>`
   * _write operation is acknowledged after being replicated to the specified number of replica set members;_
   * _this level provides a custom level of data durability._
 
 Additional options can be used to fine-tune the write concern:
-+ j: true/false: 
++ j: true/false
   * _specifies whether the write operation must be written to the journal before acknowledgment;_
   * _setting ``j: true`` ensures the data is committed to the journal and provides increased durability;_
-+ wtimeout: <ms>: 
++ wtimeout: `<ms>`
   * _specifies a time limit in milliseconds for write operations to be acknowledged;_
-  * _if the acknowledgment is not received within the specified time, the operation returns a timeout error. However, this does not mean the write operation failed; it may still be successful at a later point in time._
+  * _if acknowledgment is not received within specified time, operation returns timeout error. However, this does not mean write operation failed; it may still be successful at later point in time._
  
 ### Cursors
 &ensp; It is an object that enables you to iterate over and retrieve documents from a query result.\
@@ -348,7 +348,7 @@ _When you execute a query to fetch documents from a database, MongoDB returns a 
 >  });
 > ``` 
 
-&ensp; Cursors automatically close when all documents in the result set have been retrieved or after 10 minutes of inactivity. However, in some cases, you may want to manually close a cursor: ``cursor.close();``.
+&ensp; Cursors automatically close when all documents in result set have been retrieved or after 10 minutes of inactivity. However, in some cases, you may want to manually close cursor: ``cursor.close();``.
  
 ### Retryable Reads / Writes
 &ensp; They are an essential feature in MongoDB that provides the ability to automatically retry certain read and write operations, ensuring data consistency and improving the fault tolerance of your applications. This feature is especially useful in case of transient network errors or replica set elections that may cause operations to fail temporarily.
