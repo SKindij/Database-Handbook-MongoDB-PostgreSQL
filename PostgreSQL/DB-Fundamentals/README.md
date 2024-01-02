@@ -44,18 +44,27 @@ Each table is a named collection of rows. Each row of a given table has the same
   - value = exact number | money
     + range: with p digits with s number after the decimal point
 
-### 
+### Temporal
+* column keyword: `DATE` | `CURRENT_DATE`
+  - value = `yyyy-mm-dd` e.g. 2024-01-02
+    + range: from 4713 BC to 5874897 AD
+* column keyword: `TIME`
+  - value = `HH:MI:SS`
+  - range: from 00:00:00 to 24:00:00
+* column keyword: `TIMESTAMP`
+  - value = 2023-08-22 19:10:25-07
+* column keyword: `TIMESTAMPTZ`
+  - `SET timezone = 'America/New_York';`
+  - value = 2023-08-22 22:10:25-07
+* column keyword: `INTERVAL`
+  - value = period in years, months, days, hours, minutes, seconds
 
+### Array
+* column keyword: `character[]` | `integer[]`
 
-
-
-
-
-
-
-
-
-
+### UUID
+_allows to store Universal Unique Identifiers defined by RFC 4122_\
+_can be used to hide sensitive data exposed to the public such as values of id_
 
 
 - - -
