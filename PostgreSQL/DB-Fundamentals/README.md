@@ -90,8 +90,25 @@ CREATE TABLE retail_chains (
   retail_chain_name VARCHAR(10) UNIQUE
 );
 
+CREATE TABLE beverages_data (
+  beverage_id SERIAL PRIMARY KEY,
+  title VARCHAR(40) NOT NULL,
+  category_id SMALLINT REFERENCES drink_categories(drink_id),
+  volume DECIMAL(1, 1) NOT NULL,
+  in_wish BOOLEAN NOT NULL,
+  ratings SMALLINT NOT NULL,
+  country_id SMALLINT REFERENCES countries(country_id),
+  description TEXT,
+  image_url VARCHAR(120),
+  created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
+);
 
-
+CREATE TABLE beverage_prices (
+  beverage_id SMALLINT REFERENCES beverages_data(beverage_id),
+  retail_chain_id SMALLINT REFERENCES retail_chains(retail_chain_id),
+  price numeric NOT NULL,
+  last_updated DATE
+);
 
 
 
@@ -156,8 +173,12 @@ VALUES
   ('Silpo'),
   ('Rozetka');
 
-
-
+INSERT INTO beverages_data (beverage_id, title, category_id, volume, in_wish, ratings, country_id, description, image_url)
+VALUES (
+ 1001, 'Wild Turkey Rare Breed 0.7L', 2, 0.7, false, 5, 29,
+ 'Тони паленого коричневого цукру і ванілі, трохи цитрусових, сосни і дуба.',
+ '/images/beverages/Wild-Turkey-Rare-Breed-07.webp'
+);
 
 
 ```
