@@ -2,7 +2,7 @@
 
 PostgreSQL is open-source relational database that is highly scalable and supports complex queries. It is known for its reliability and data integrity features.
 
-## Introduction to Database
+## [Intro to Database](https://github.com/SKindij/Database-Handbook-MongoDB-PostgreSQL/tree/main/PostgreSQL/Intro-to-Database)
 
 ### Basic SQL
 
@@ -14,7 +14,7 @@ PostgreSQL is open-source relational database that is highly scalable and suppor
 * Download and install PostgreSQL on your computer.
 * Learn how to start and stop the PostgreSQL server.
 
-## PostgreSQL Fundamentals
+## [PostgreSQL Fundamentals](https://github.com/SKindij/Database-Handbook-MongoDB-PostgreSQL/tree/main/PostgreSQL/DB-Fundamentals)
 
 ### Creating Databases and Tables
 
@@ -29,8 +29,6 @@ PostgreSQL is open-source relational database that is highly scalable and suppor
 ### Modifying Data
 
 * Study how to update, delete, and modify records in a table.
-
-## Advanced PostgreSQL Topics
 
 ### Constraints and Indexes
 
@@ -64,7 +62,6 @@ PostgreSQL is open-source relational database that is highly scalable and suppor
 
 * Study ways to optimize PostgreSQL for better performance.
 * Learn about query optimization and indexing strategies.
-
 
 ## Advanced Topics and Projects
 
