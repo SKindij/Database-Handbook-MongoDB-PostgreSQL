@@ -85,7 +85,10 @@ CREATE TABLE drink_categories (
   drink_name VARCHAR(10) UNIQUE
 );
 
-
+CREATE TABLE retail_chains (
+  retail_chain_id SERIAL PRIMARY KEY,
+  retail_chain_name VARCHAR(10) UNIQUE
+);
 
 
 
@@ -146,8 +149,12 @@ VALUES
   ('whiskey'),
   ('wine');
 
-
-
+INSERT INTO retail_chains (retail_chain_name)
+VALUES 
+  ('Auchan'),
+  ('Novus'),
+  ('Silpo'),
+  ('Rozetka');
 
 
 
