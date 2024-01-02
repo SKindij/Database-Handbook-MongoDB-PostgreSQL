@@ -5,10 +5,60 @@ Each table is a named collection of rows. Each row of a given table has the same
 
 ## Data Types
 
+### Boolean
+* column keyword: `boolean` | `bool`
+  - value = `true`
+    + insert data: `1`, `yes`, `y`, `t`, `true`
+  - value = `false`
+    + insert data: `0`, `no`, `false`, `f`
+  - value = `null`
+    + insert data: `space`
+
+### Character
+* column keyword: `CHAR(n)`
+  - value = fixed-length character with space padded
+    + _If string is shorter than length of column, DB pads spaces._
+* column keyword: `VARCHAR(n)`
+  - value = variable-length character string
+* column keyword: `TEXT`
+  - value = variable-length character string
+    + _It is a character string with unlimited length._
+
+### Numeric
+* column keyword: `SMALLINT`
+  - value = 2-byte signed integer
+    + range: from -32,768 to 32,767
+* column keyword: `INT`
+  - value = 4-byte integer
+    + range: from -2,147,483,648 to 2,147,483,647
+* column keyword: `SERIAL`
+  - value = automatically generate and populate
+    + range: 1, 2, 3, 4, 5, ..., n
+* column keyword: `float(n)`
+  - value = precision n up to 8 bytes
+    + range: from float(1) to float(24)
+* column keyword: `real` | `float8`
+  - value = precision 4-byte
+    + range: floating-point number
+* column keyword: `numeric` | `numeric(p,s)`
+  - value = exact number | money
+    + range: with p digits with s number after the decimal point
+
+### 
 
 
 
 
+
+
+
+
+
+
+
+
+
+- - -
 
 ## Creating Databases and Tables
 
@@ -34,8 +84,6 @@ CREATE TABLE drink_categories (
 
 
 ```
-
-
 
 ## Inserting and Retrieving Data
 
