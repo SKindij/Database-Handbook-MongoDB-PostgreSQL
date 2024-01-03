@@ -115,9 +115,7 @@ CREATE TABLE beverage_prices (
 ```sql
 DROP TABLE table_name;
 
-DROP TABLE countries, drink_categories, retail_chains, beverages_data;
-
-
+DROP TABLE countries, drink_categories, retail_chains, beverages_data, beverage_prices;
 ```
 
 ## Inserting Data
@@ -126,32 +124,10 @@ DROP TABLE countries, drink_categories, retail_chains, beverages_data;
 INSERT INTO countries (country_name, prefix_ean)
 VALUES
     ('Argentina', '779'),
-    ('Armenia', '485'),
-    ('Australia', '930'),
-    ('Barbados', '500'),
-    ('Belgium', '540'),
     ('Britain', '500-509'),
-    ('Bulgaria', '380'),
-    ('Cuba', '850'),
-    ('CzechRepublic', '859'),
-    ('Dominican', '000-019'),
-    ('Finland', '640-649'),
-    ('France', '300-379'),
-    ('Georgia', '000-019'),
     ('Germany', '400-440'),
-    ('Greece', '520'),
-    ('Ireland', '539'),
-    ('Italy', '800-839'),
-    ('Jamaica', '600-601'),
     ('Mexico', '750-751'),
-    ('Norway', '700-709'),
-    ('Poland', '590'),
-    ('Portugal', '560'),
-    ('Scotland', '500'),
-    ('Slovakia', '860'),
-    ('SouthAfrica', '600-601'),
     ('Spain', '841-843'),
-    ('Sweden', '730-739'),
     ('Ukraine', '482'),
     ('USA', '000-019');
 
@@ -203,19 +179,35 @@ JOIN countries c ON b.country_id = c.country_id
 WHERE b.beverage_id = {id_of_beverage};
 ```
 
-
-### 
+#### request for a specific drink category
 ```sql
+-- Select the beverage title and volume for a specific drink category
+SELECT b.beverage_title, b.beverage_volume
+FROM beverages_data b
+-- Joining beverages_data with drink_categories using the category_id field
+JOIN drink_categories d ON b.category_id = d.drink_id
+-- Filtering by a specific drink category (replace {your_drink_category} with the actual drink category)
+WHERE d.drink_category = '{your_drink_category}';
 
 ```
 
-
-### 
+#### price request in retail chains by drink ID
 ```sql
-
+SELECT rc.retail_chain_name, bp.price, bp.last_updated
+FROM beverage_prices bp
+JOIN retail_chains rc ON bp.retail_chain_id = rc.retail_chain_id
+WHERE bp.beverage_id = {your_beverage_id};
 ```
 
-
+#### complex query with multiple conditions
+```sql
+SELECT beverage_title as Nazva, rc.retail_chain_name as Store, bp.price as "Ціна", bd.beverage_volume as "Міра"
+FROM beverages_data bd
+JOIN beverage_prices bp ON bd.beverage_id = bp.beverage_id
+JOIN retail_chains rc ON bp.retail_chain_id = rc.retail_chain_id
+WHERE bd.beverage_title like 'Wild%' AND bp.price > 0 and bp.price < 900
+ORDER BY bp.price ASC;
+```
 
 ## Modifying Data
 
