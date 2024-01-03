@@ -110,8 +110,10 @@ CREATE TABLE beverage_prices (
   last_updated DATE
 );
 
-
-
+```
+#### A command to delete a table from a database
+```sql
+DROP TABLE table_name;
 ```
 
 ## Inserting and Retrieving Data
