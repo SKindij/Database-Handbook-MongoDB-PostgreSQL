@@ -76,30 +76,30 @@ _can be used to hide sensitive data exposed to the public such as values of id_
 ```sql
 CREATE TABLE countries (
     country_id SERIAL PRIMARY KEY,
-    country_name VARCHAR(20) NOT NULL,
+    country_name VARCHAR(20) NOT NULL UNIQUE,
     prefix_ean VARCHAR(7) NOT NULL
 );
 
 CREATE TABLE drink_categories (
   drink_id SERIAL PRIMARY KEY,
-  drink_name VARCHAR(10) UNIQUE
+  drink_category VARCHAR(10) NOT NULL UNIQUE
 );
 
 CREATE TABLE retail_chains (
   retail_chain_id SERIAL PRIMARY KEY,
-  retail_chain_name VARCHAR(10) UNIQUE
+  retail_chain_name VARCHAR(10) NOT NULL UNIQUE
 );
 
 CREATE TABLE beverages_data (
   beverage_id SERIAL PRIMARY KEY,
-  title VARCHAR(40) NOT NULL,
+  beverage_title VARCHAR(40) NOT NULL,
   category_id SMALLINT REFERENCES drink_categories(drink_id),
-  volume DECIMAL(1, 1) NOT NULL,
-  in_wish BOOLEAN NOT NULL,
-  ratings SMALLINT NOT NULL,
+  beverage_volume FLOAT NOT NULL,
+  beverage_in_wish BOOLEAN NOT NULL,
+  beverage_ratings SMALLINT NOT NULL,
   country_id SMALLINT REFERENCES countries(country_id),
-  description TEXT,
-  image_url VARCHAR(120),
+  beverage_description TEXT,
+  beverage_image_url VARCHAR(120),
   created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -114,9 +114,13 @@ CREATE TABLE beverage_prices (
 #### A command to delete a table from a database
 ```sql
 DROP TABLE table_name;
+
+DROP TABLE countries, drink_categories, retail_chains, beverages_data;
+
+
 ```
 
-## Inserting and Retrieving Data
+## Inserting Data
 
 ```sql
 INSERT INTO countries (country_name, prefix_ean)
@@ -151,7 +155,7 @@ VALUES
     ('Ukraine', '482'),
     ('USA', '000-019');
 
-INSERT INTO drink_categories (drink_name)
+INSERT INTO drink_categories (drink_category)
 VALUES 
   ('absinthe'),
   ('bourbon'),
@@ -185,6 +189,31 @@ VALUES (
 
 ```
 
+## Retrieving Data
+
+
+#### find out the country by the value of beverage_id
+```sql
+-- Select title of beverage and country name
+SELECT b.beverage_title, c.country_name
+FROM beverages_data b
+-- Joining beverages_data table with countries table using country_id field
+JOIN countries c ON b.country_id = c.country_id
+-- Filter by specific beverage_id
+WHERE b.beverage_id = {id_of_beverage};
+```
+
+
+### 
+```sql
+
+```
+
+
+### 
+```sql
+
+```
 
 
 
