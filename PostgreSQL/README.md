@@ -4,31 +4,19 @@ PostgreSQL is open-source relational database that is highly scalable and suppor
 
 ## [Intro to Database](https://github.com/SKindij/Database-Handbook-MongoDB-PostgreSQL/tree/main/PostgreSQL/Intro-to-Database)
 
-### Basic SQL
+#### Development Environment
 
-* Begin with SQL (Structured Query Language).
-* Learn about SQL queries, SELECT statements, and basic filtering.
-
-### Introduction to PostgreSQL
-
-* Download and install PostgreSQL on your computer.
-* Learn how to start and stop the PostgreSQL server.
+#### Best PostgreSQL Hosting
 
 ## [PostgreSQL Fundamentals](https://github.com/SKindij/Database-Handbook-MongoDB-PostgreSQL/tree/main/PostgreSQL/DB-Fundamentals)
 
-### Creating Databases and Tables
+### Explore Data Types
 
-* Understand how to create databases and tables in PostgreSQL.
-* Explore different data types (integer, text, date, etc.).
+#### How to create Tables
 
-###  Inserting and Retrieving Data
+####  Inserting and Retrieving Data
 
-* Learn how to insert data into tables.
-* Practice retrieving data using SELECT statements.
-
-### Modifying Data
-
-* Study how to update, delete, and modify records in a table.
+#### Modifying Data
 
 ### Constraints and Indexes
 
@@ -46,19 +34,21 @@ PostgreSQL is open-source relational database that is highly scalable and suppor
 * Practice writing complex queries.
 
 
-## Administration and Best Practices
+## [Administration and Best Practices](https://github.com/SKindij/Database-Handbook-MongoDB-PostgreSQL/tree/main/PostgreSQL/Admin-and-Practice)
 
-### Backup and Restore
+### @vercel/postgres
+
+#### Backup and Restore
 
 * Understand how to backup and restore databases.
 * Learn about PostgreSQL tools for these tasks.
 
-### Security and Authentication
+#### Security and Authentication
 
 * Explore user management and authentication.
 * Learn about roles and permissions in PostgreSQL.
 
-### Performance Optimization
+#### Performance Optimization
 
 * Study ways to optimize PostgreSQL for better performance.
 * Learn about query optimization and indexing strategies.
