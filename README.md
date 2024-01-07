@@ -1,7 +1,12 @@
-# database-reference-book
-topic: 🦉 databases that will be used together with node.js
+# 🦉 database-reference-book
 
-## types of databases:
+|               DATABASE              |                                Read in the TOPIC                                                  |
+|-------------------------------------|---------------------------------------------------------------------------------------|
+| **NoSQL** (Not only SQL)            | [MongoDB](https://github.com/SKindij/database-reference-book/tree/main/MongoDB)       |
+| **SQL** (Structured Query Language) | [PostgreSQL](https://github.com/SKindij/database-reference-book/tree/main/PostgreSQL) |
+
+
+### types of databases:
 
 * **Relational databases** are organized using tables with predefined relationships between them. Data is stored in rows and columns, and the relationships between tables are defined using keys:
   + **Postgres SQL**, MySQL, Oracle, and Microsoft SQL Server.
@@ -11,20 +16,3 @@ topic: 🦉 databases that will be used together with node.js
   + db4o and ObjectStore.
 * **Hierarchical databases** organize data in a tree-like structure, with each record having one parent and possibly many children. They are often used in mainframe environments:
   + *IBM's Information Management System (IMS) and *the Windows Registry.
-___
-
-|               DATABASE              |                                TOPIC                                                  |
-|-------------------------------------|---------------------------------------------------------------------------------------|
-| **NoSQL** (Not only SQL)            | [MongoDB](https://github.com/SKindij/database-reference-book/tree/main/MongoDB)       |
-| **SQL** (Structured Query Language) | [PostgreSQL](https://github.com/SKindij/database-reference-book/tree/main/PostgreSQL) |
-
-
-
-
-
-
-
-
-
-
-
