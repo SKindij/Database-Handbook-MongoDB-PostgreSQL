@@ -3,9 +3,9 @@
 &emsp;Tables are grouped into databases, and a collection of databases managed by a single PostgreSQL server instance constitutes a database cluster.
 Each table is a named collection of rows. Each row of a given table has the same set of named columns, and each column is of a specific data type.
 
-## Data Types
+## 📊 Data Types 🛠️
 
-### Boolean
+### 🔘 Boolean ✔️
 * column keyword: `boolean` | `bool`
   - value = `true`
     + insert data: `1`, `yes`, `y`, `t`, `true`
@@ -14,81 +14,74 @@ Each table is a named collection of rows. Each row of a given table has the same
   - value = `null`
     + insert data: `space`
 
-### Character
-* column keyword: `CHAR(n)`
-  - value = fixed-length character with space padded
-    + _If string is shorter than length of column, DB pads spaces._
-* column keyword: `VARCHAR(n)`
-  - value = variable-length character string
-* column keyword: `TEXT`
-  - value = variable-length character string
-    + _It is a character string with unlimited length._
+### 🅰️ Character 🔤
 
-### Numeric
+| Keyword      | B | Description            | Range                              |
+|--------------|---|------------------------|------------------------------------|
+| `CHAR(n)`    | v | fixed-length character | For shorter length DB pads spaces. |
+| `VARCHAR(n)` | v | fixed-length string    | Without unnecessary spaces.        |
+|  `TEXT`      | v | variable-length string | With unlimited length.             |
+
+### 🔢 Numeric
 
 | Keyword        | B | Description                | Range                                |
 |----------------|---|----------------------------|--------------------------------------|
 | `SMALLINT`     | 2 | small-range integer        | from -32,768 to 32,767               |
 | `INTEGER`      | 4 | typical choice             | from -2,147,483,648 to 2,147,483,647 |
-| `SERIAL`       |   | auto generate and populate | 1, 2, 3, 4, 5, ..., n                |
+| `SMALLSERIAL`  | 2 | autoincrementing           | 1, 2, 3, 4, 5, n , ..., 32,767       |
+| `SERIAL`       | 4 | auto generate and populate | 1, 2, 3, ..., n, 2,147,483,647       |
 | `numeric(p,s)` | v | user-specified precision   | from -3.4 * 10n38 to +3.4 * 10n38    |
-| `real`/`float4`| 4 | real inexact number        | 6 decimal digits                     |
+| `real`/`float4`| 4 | inexact number             | 6 decimal digits                     |
 |`float`/`float8`| 8 | double precision           | 6 decimal digits                     |
 
-### Temporal
-* column keyword: `DATE` | `CURRENT_DATE`
-  - value = `yyyy-mm-dd` e.g. 2024-01-02
-    + range: from 4713 BC to 5874897 AD
-* column keyword: `TIME`
-  - value = `HH:MI:SS`
-  - range: from 00:00:00 to 24:00:00
-* column keyword: `TIMESTAMP`
-  - value = 2023-08-22 19:10:25-07
-* column keyword: `TIMESTAMPTZ`
-  - `SET timezone = 'America/New_York';`
-  - value = 2023-08-22 22:10:25-07
-* column keyword: `INTERVAL`
-  - value = period in years, months, days, hours, minutes, seconds
+### 🕰️ Temporal 📅
 
-### Array
+| Keyword              | B | Description                  | Range                      |
+|----------------------|---|------------------------------|----------------------------|
+| `DATE`/`CURRENT_DATE`| 4 | `yyyy-mm-dd` e.g. 2024-01-02 | from 4713 BC to 5874897 AD |
+| `TIME`               | 8 | `HH:MI:SS`                   | from 00:00:00 to 24:00:00  |
+| `TIMESTAMP`          | 8 | stores date & time           |                            |
+| `INTERVAL`           | 16| period in years, months, days | hours, minutes, seconds   |
+| `TIMESTAMPTZ`        | 8 | `SET timezone = 'America/New_York';` | 2023-08-22 22:10:25-07 |
+
+### 🎚️ Array 📚
 * column keyword: `character[]` | `integer[]`
 
-### UUID
+### 🔑 UUID 🆔
 _allows to store Universal Unique Identifiers defined by RFC 4122_\
 _can be used to hide sensitive data exposed to the public such as values of id_
 
-
 - - -
 
-## Creating Databases and Tables
+## 🗄️ Creating Database Tables 📊
 
 &emsp;You can create a new table by specifying the table name, along with all column names and their types:
 
 ```sql
 CREATE TABLE countries (
-    country_id SERIAL PRIMARY KEY,
+    country_id SMALLSERIAL PRIMARY KEY,
     country_name VARCHAR(20) NOT NULL UNIQUE,
     prefix_ean VARCHAR(7) NOT NULL
 );
 
 CREATE TABLE drink_categories (
-  drink_id SERIAL PRIMARY KEY,
-  drink_category VARCHAR(10) NOT NULL UNIQUE
+  drink_id SMALLSERIAL PRIMARY KEY,
+  drink_category VARCHAR(20) NOT NULL UNIQUE
 );
 
 CREATE TABLE retail_chains (
-  retail_chain_id SERIAL PRIMARY KEY,
-  retail_chain_name VARCHAR(10) NOT NULL UNIQUE
+  retail_chain_id SMALLSERIAL PRIMARY KEY,
+  retail_chain_name VARCHAR(20) NOT NULL UNIQUE
 );
 
 CREATE TABLE beverages_data (
-  beverage_id SERIAL PRIMARY KEY,
+  beverage_id SMALLSERIAL PRIMARY KEY,
   beverage_title VARCHAR(40) NOT NULL,
-  category_id SMALLINT REFERENCES drink_categories(drink_id),
+  category_id SMALLINT REFERENCES drink_categories(drink_id) NOT NULL,
   beverage_volume FLOAT NOT NULL,
   beverage_in_wish BOOLEAN NOT NULL,
   beverage_ratings SMALLINT NOT NULL,
-  country_id SMALLINT REFERENCES countries(country_id),
+  country_id SMALLINT REFERENCES countries(country_id) NOT NULL,
   beverage_description TEXT,
   beverage_image_url VARCHAR(120),
   created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
@@ -146,7 +139,8 @@ VALUES
   ('Silpo'),
   ('Rozetka');
 
-INSERT INTO beverages_data (beverage_id, title, category_id, volume, in_wish, ratings, country_id, description, image_url)
+INSERT INTO beverages_data (beverage_id, beverage_title, category_id, beverage_volume, 
+ beverage_in_wish, beverage_ratings, country_id, beverage_description, beverage_image_url)
 VALUES (
  1001, 'Wild Turkey Rare Breed 0.7L', 2, 0.7, false, 5, 29,
  'Тони паленого коричневого цукру і ванілі, трохи цитрусових, сосни і дуба.',
@@ -158,6 +152,19 @@ VALUES (
 
 ## Retrieving Data
 
+### show all information from the table
+
+```sql
+SELECT * FROM countries
+ORDER BY country_id ASC
+
+SELECT * FROM drink_categories
+ORDER BY drink_id ASC
+
+SELECT * FROM beverages_data
+ORDER BY beverage_id ASC 
+
+```
 
 #### find out the country by the value of beverage_id
 ```sql
