@@ -25,24 +25,15 @@ Each table is a named collection of rows. Each row of a given table has the same
     + _It is a character string with unlimited length._
 
 ### Numeric
-* column keyword: `SMALLINT`
-  - value = 2-byte signed integer
-    + range: from -32,768 to 32,767
-* column keyword: `INT`
-  - value = 4-byte integer
-    + range: from -2,147,483,648 to 2,147,483,647
-* column keyword: `SERIAL`
-  - value = automatically generate and populate
-    + range: 1, 2, 3, 4, 5, ..., n
-* column keyword: `float(n)`
-  - value = precision n up to 8 bytes
-    + range: from float(1) to float(24)
-* column keyword: `real` | `float8`
-  - value = precision 4-byte
-    + range: floating-point number
-* column keyword: `numeric` | `numeric(p,s)`
-  - value = exact number | money
-    + range: with p digits with s number after the decimal point
+
+| Keyword        | B | Description                | Range                                |
+|----------------|---|----------------------------|--------------------------------------|
+| `SMALLINT`     | 2 | small-range integer        | from -32,768 to 32,767               |
+| `INTEGER`      | 4 | typical choice             | from -2,147,483,648 to 2,147,483,647 |
+| `SERIAL`       |   | auto generate and populate | 1, 2, 3, 4, 5, ..., n                |
+| `numeric(p,s)` | v | user-specified precision   | from -3.4 * 10n38 to +3.4 * 10n38    |
+| `real`/`float4`| 4 | real inexact number        | 6 decimal digits                     |
+|`float`/`float8`| 8 | double precision           | 6 decimal digits                     |
 
 ### Temporal
 * column keyword: `DATE` | `CURRENT_DATE`
