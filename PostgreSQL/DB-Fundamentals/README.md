@@ -145,6 +145,26 @@ VALUES (
  1001, 'Wild Turkey Rare Breed 0.7L', 2, 0.7, false, 5, 29,
  'Тони паленого коричневого цукру і ванілі, трохи цитрусових, сосни і дуба.',
  '/images/beverages/Wild-Turkey-Rare-Breed-07.webp'
+),
+(
+ 1002, 'Wild Turkey Longbranch 0.7L', 2, 0.7, false, 5, 29,
+ 'Смак з відтінками димних солодощів, червоних яблук і карамелі.',
+ '/images/beverages/Wild-Turkey-Longbranch-07.webp'
+),
+(
+ 1003, 'Wild Turkey 101 0.7L', 2, 0.7, false, 5, 29,
+ 'Смак ванілі, меду, карамелі, тютюну і тростинного цукру. Аромат ванілі, дуба, апельсина.',
+ '/images/beverages/Wild-Turkey-101-07.webp'
+),
+(
+ 1004, 'Wild Turkey 0.7L', 2, 0.7, true, 5, 29,
+ 'Аромат ірису, меду, карамелі і обпаленого дуба. Делікатний, солодкуватий, трохи маслянистий смак.',
+ '/images/beverages/Wild-Turkey-07.webp'
+),
+(
+ 1005, 'Wild Turkey Rye 0.7L', 2, 0.7, false, 5, 29,
+ 'Аромат має ванільно-пряні, дубові, цитрусові акценти. У смаку грушеві тони в компанії карамелі.',
+ '/images/beverages/Wild-Turkey-Rye-07.webp'
 );
 
 
@@ -166,28 +186,38 @@ ORDER BY beverage_id ASC
 
 ```
 
-#### find out the country by the value of beverage_id
+#### find out certain information by a specific id
 ```sql
--- Select title of beverage and country name
-SELECT b.beverage_title, c.country_name
-FROM beverages_data b
--- Joining beverages_data table with countries table using country_id field
-JOIN countries c ON b.country_id = c.country_id
+-- choose the data we need
+SELECT bd.beverage_title, c.country_name, dc.drink_category
+FROM beverages_data bd
+-- combine beverages_data table with fields of other tables
+JOIN countries c ON bd.country_id = c.country_id
+JOIN drink_categories dc ON bd.category_id = dc.drink_id
 -- Filter by specific beverage_id
-WHERE b.beverage_id = {id_of_beverage};
+WHERE bd.beverage_id = {id_of_beverage};
 ```
 
 #### request for a specific drink category
 ```sql
--- Select the beverage title and volume for a specific drink category
-SELECT b.beverage_title, b.beverage_volume
-FROM beverages_data b
--- Joining beverages_data with drink_categories using the category_id field
-JOIN drink_categories d ON b.category_id = d.drink_id
--- Filtering by a specific drink category (replace {your_drink_category} with the actual drink category)
-WHERE d.drink_category = '{your_drink_category}';
+-- choose the data we need
+SELECT bd.beverage_title, bd.beverage_volume, bd.beverage_description
+FROM beverages_data bd
+-- combine beverages_data table with fields of other tables
+JOIN drink_categories dc ON bd.category_id = dc.drink_id
+-- Filtering by a specific drink category
+WHERE dc.drink_category = '{your_drink_category}';
 
 ```
+
+#### get unique countries from which drinks are presented
+
+```sql
+SELECT DISTINCT c.country_name
+FROM beverages_data bd
+JOIN countries c ON bd.country_id = c.country_id;
+```
+
 
 #### price request in retail chains by drink ID
 ```sql
