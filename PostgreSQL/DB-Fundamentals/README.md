@@ -186,7 +186,7 @@ ORDER BY beverage_id ASC
 
 ```
 
-#### get complete information about all drinks
+#### get information about all drinks
 ```sql
 -- choose the data we need
 SELECT
@@ -194,9 +194,6 @@ SELECT
   bd.beverage_title AS title,
   dc.drink_category AS category,
   bd.beverage_volume AS volume,
-  rc.retail_chain_name AS retailChain,
-  bp.price AS prices,
-  bp.last_updated AS lastUpdated,
   bd.beverage_in_wish AS inWish,
   bd.beverage_ratings AS ratings,
   co.country_name AS country,
@@ -206,14 +203,18 @@ FROM
   beverages_data bd
 -- combine beverages_data table with fields of other tables
 JOIN
-  beverage_prices bp ON bd.beverage_id = bp.beverage_id
-JOIN
-  retail_chains rc ON bp.retail_chain_id = rc.retail_chain_id
-JOIN
   countries co ON bd.country_id = co.country_id
 JOIN
   drink_categories dc ON bd.category_id = dc.drink_id;
 
+```
+
+#### price request in retail chains by drink ID
+```sql
+SELECT rc.retail_chain_name AS chain, bp.price, bp.last_updated AS lastUpdated
+FROM beverage_prices bp
+JOIN retail_chains rc ON bp.retail_chain_id = rc.retail_chain_id
+WHERE bp.beverage_id = {your_beverage_id};
 ```
 
 #### request for 
@@ -233,15 +234,6 @@ JOIN
 SELECT DISTINCT c.country_name
 FROM beverages_data bd
 JOIN countries c ON bd.country_id = c.country_id;
-```
-
-
-#### price request in retail chains by drink ID
-```sql
-SELECT rc.retail_chain_name, bp.price, bp.last_updated
-FROM beverage_prices bp
-JOIN retail_chains rc ON bp.retail_chain_id = rc.retail_chain_id
-WHERE bp.beverage_id = {your_beverage_id};
 ```
 
 #### complex query with multiple conditions
