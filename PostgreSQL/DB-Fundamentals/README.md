@@ -186,27 +186,44 @@ ORDER BY beverage_id ASC
 
 ```
 
-#### find out certain information by a specific id
+#### get complete information about all drinks
 ```sql
 -- choose the data we need
-SELECT bd.beverage_title, c.country_name, dc.drink_category
-FROM beverages_data bd
+SELECT
+  bd.beverage_id AS beverageId,
+  bd.beverage_title AS title,
+  dc.drink_category AS category,
+  bd.beverage_volume AS volume,
+  rc.retail_chain_name AS retailChain,
+  bp.price AS prices,
+  bp.last_updated AS lastUpdated,
+  bd.beverage_in_wish AS inWish,
+  bd.beverage_ratings AS ratings,
+  co.country_name AS country,
+  bd.beverage_description AS description,
+  bd.beverage_image_url AS imageUrl
+FROM
+  beverages_data bd
 -- combine beverages_data table with fields of other tables
-JOIN countries c ON bd.country_id = c.country_id
-JOIN drink_categories dc ON bd.category_id = dc.drink_id
--- Filter by specific beverage_id
-WHERE bd.beverage_id = {id_of_beverage};
+JOIN
+  beverage_prices bp ON bd.beverage_id = bp.beverage_id
+JOIN
+  retail_chains rc ON bp.retail_chain_id = rc.retail_chain_id
+JOIN
+  countries co ON bd.country_id = co.country_id
+JOIN
+  drink_categories dc ON bd.category_id = dc.drink_id;
+
 ```
 
-#### request for a specific drink category
+#### request for 
 ```sql
 -- choose the data we need
-SELECT bd.beverage_title, bd.beverage_volume, bd.beverage_description
-FROM beverages_data bd
+
 -- combine beverages_data table with fields of other tables
-JOIN drink_categories dc ON bd.category_id = dc.drink_id
+
 -- Filtering by a specific drink category
-WHERE dc.drink_category = '{your_drink_category}';
+
 
 ```
 
