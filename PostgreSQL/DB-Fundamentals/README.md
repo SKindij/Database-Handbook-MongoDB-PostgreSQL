@@ -59,19 +59,14 @@ _can be used to hide sensitive data exposed to the public such as values of id_
 
 ```sql
 CREATE TABLE countries (
-    country_id SMALLSERIAL PRIMARY KEY,
+    country_id SMALLINT PRIMARY KEY,
     country_name VARCHAR(20) NOT NULL UNIQUE,
     prefix_ean VARCHAR(7) NOT NULL
 );
 
 CREATE TABLE drink_categories (
-  drink_id SMALLSERIAL PRIMARY KEY,
-  drink_category VARCHAR(20) NOT NULL UNIQUE
-);
-
-CREATE TABLE retail_chains (
-  retail_chain_id SMALLSERIAL PRIMARY KEY,
-  retail_chain_name VARCHAR(20) NOT NULL UNIQUE
+  category_id SMALLINT PRIMARY KEY,
+  category_name VARCHAR(20) NOT NULL UNIQUE
 );
 
 CREATE TABLE beverages_data (
@@ -105,39 +100,54 @@ DROP TABLE countries, drink_categories, retail_chains, beverages_data, beverage_
 ## Inserting Data
 
 ```sql
-INSERT INTO countries (country_name, prefix_ean)
+INSERT INTO countries (country_id, country_name, prefix_ean)
 VALUES
-    ('Argentina', '779'),
-    ('Britain', '500-509'),
-    ('Germany', '400-440'),
-    ('Mexico', '750-751'),
-    ('Spain', '841-843'),
-    ('Ukraine', '482'),
-    ('USA', '000-019');
+  (101, 'Argentina', '779'),
+  (102, 'Armenia', '485'),
+  (103, 'Australia', '930'),
+  (104, 'Barbados', '500'),
+  (105, 'Belgium', '540'),
+  (106, 'Britain', '500-509'),
+  (107, 'Bulgaria', '380'),
+  (108, 'Cuba', '850'),
+  (109, 'CzechRepublic', '859'),
+  (110, 'Dominican', '746'),
+  (111, 'Finland', '640'),
+  (112, 'France', '300-379'),
+  (113, 'Georgia', '486'),
+  (114, 'Germany', '400-440'),
+  (115, 'Greece', '520'),
+  (116, 'Ireland', '539'),
+  (117, 'Italy', '800-839'),
+  (118, 'Jamaica', '600-601'),
+  (119, 'Mexico', '750-751'),
+  (120, 'Norway', '700-709'),
+  (121, 'Poland', '590'),
+  (122, 'Portugal', '560'),
+  (123, 'Scotland', '500'),
+  (124, 'Slovakia', '860'),
+  (125, 'SouthAfrica', '600-601'),
+  (126, 'Spain', '841-843'),
+  (127, 'Sweden', '730-739'),
+  (128, 'Ukraine', '482'),
+  (129, 'USA', '000-019');
 
-INSERT INTO drink_categories (drink_category)
-VALUES 
-  ('absinthe'),
-  ('bourbon'),
-  ('brandy'),
-  ('champagne'),
-  ('cider'),
-  ('gin'),
-  ('horilka'),
-  ('liqueur'),
-  ('portwein'),
-  ('rum'),
-  ('tequila'),
-  ('tincture'),
-  ('whiskey'),
-  ('wine');
-
-INSERT INTO retail_chains (retail_chain_name)
-VALUES 
-  ('Auchan'),
-  ('Novus'),
-  ('Silpo'),
-  ('Rozetka');
+INSERT INTO drink_categories (category_id, category_name)
+VALUES
+  (201, 'absinthe'),
+  (202, 'bourbon'),
+  (203, 'brandy'),
+  (204, 'champagne'),
+  (205, 'cider'),
+  (206, 'gin'),
+  (207, 'horilka'),
+  (208, 'liqueur'),
+  (209, 'portwein'),
+  (210, 'rum'),
+  (211, 'tequila'),
+  (212, 'tincture'),
+  (213, 'whiskey'),
+  (214, 'wine');
 
 INSERT INTO beverages_data (beverage_id, beverage_title, category_id, beverage_volume, 
  beverage_in_wish, beverage_ratings, country_id, beverage_description, beverage_image_url)
