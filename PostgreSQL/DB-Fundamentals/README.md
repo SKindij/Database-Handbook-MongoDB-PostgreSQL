@@ -72,8 +72,14 @@ CREATE TABLE drink_categories (
 CREATE TABLE beverages_data (
   beverage_id SMALLSERIAL PRIMARY KEY,
   beverage_title VARCHAR(40) NOT NULL,
-  category_id SMALLINT REFERENCES drink_categories(drink_id) NOT NULL,
+  category_id SMALLINT REFERENCES drink_categories(category_id) NOT NULL,
   beverage_volume FLOAT NOT NULL,
+  auchan_price SMALLINT NOT NULL,
+  novus_price SMALLINT NOT NULL,
+  silpo_price SMALLINT NOT NULL,
+  atb_price SMALLINT NOT NULL,
+  rozetka_price SMALLINT NOT NULL,
+  last_updated DATE,
   beverage_in_wish BOOLEAN NOT NULL,
   beverage_ratings SMALLINT NOT NULL,
   country_id SMALLINT REFERENCES countries(country_id) NOT NULL,
@@ -82,19 +88,12 @@ CREATE TABLE beverages_data (
   created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE beverage_prices (
-  beverage_id SMALLINT REFERENCES beverages_data(beverage_id),
-  retail_chain_id SMALLINT REFERENCES retail_chains(retail_chain_id),
-  price numeric NOT NULL,
-  last_updated DATE
-);
-
 ```
 #### A command to delete a table from a database
 ```sql
 DROP TABLE table_name;
 
-DROP TABLE countries, drink_categories, retail_chains, beverages_data, beverage_prices;
+DROP TABLE countries, drink_categories, beverages_data;
 ```
 
 ## Inserting Data
@@ -149,34 +148,39 @@ VALUES
   (213, 'whiskey'),
   (214, 'wine');
 
-INSERT INTO beverages_data (beverage_id, beverage_title, category_id, beverage_volume, 
+INSERT INTO beverages_data (beverage_id, beverage_title, category_id, beverage_volume,
+ auchan_price, novus_price, silpo_price, atb_price, rozetka_price, last_updated,
  beverage_in_wish, beverage_ratings, country_id, beverage_description, beverage_image_url)
 VALUES (
- 1001, 'Wild Turkey Rare Breed 0.7L', 2, 0.7, false, 5, 29,
+ 1001, 'Wild Turkey Rare Breed 0.7L', 202, 0.7,
+  1669, 0, 2199, 0, 1999, '2024-01-01', false, 5, 129,
  'Тони паленого коричневого цукру і ванілі, трохи цитрусових, сосни і дуба.',
  '/images/beverages/Wild-Turkey-Rare-Breed-07.webp'
 ),
 (
- 1002, 'Wild Turkey Longbranch 0.7L', 2, 0.7, false, 5, 29,
+ 1002, 'Wild Turkey Longbranch 0.7L', 202, 0.7,
+ 1637, 1779, 1699, 0, 0, '2024-01-01', false, 5, 129,
  'Смак з відтінками димних солодощів, червоних яблук і карамелі.',
  '/images/beverages/Wild-Turkey-Longbranch-07.webp'
 ),
 (
- 1003, 'Wild Turkey 101 0.7L', 2, 0.7, false, 5, 29,
+ 1003, 'Wild Turkey 101 0.7L', 202, 0.7,
+ 1049, 729, 749, 0, 729, '2024-01-01', false, 5, 129,
  'Смак ванілі, меду, карамелі, тютюну і тростинного цукру. Аромат ванілі, дуба, апельсина.',
  '/images/beverages/Wild-Turkey-101-07.webp'
 ),
 (
- 1004, 'Wild Turkey 0.7L', 2, 0.7, true, 5, 29,
+ 1004, 'Wild Turkey 0.7L', 202, 0.7,
+ 849, 589, 599, 0, 670, '2024-01-01', true, 5, 129,
  'Аромат ірису, меду, карамелі і обпаленого дуба. Делікатний, солодкуватий, трохи маслянистий смак.',
  '/images/beverages/Wild-Turkey-07.webp'
 ),
 (
- 1005, 'Wild Turkey Rye 0.7L', 2, 0.7, false, 5, 29,
+ 1005, 'Wild Turkey Rye 0.7L', 202, 0.7,
+ 849, 0, 969, 0, 1099, '2024-01-01', false, 5, 129,
  'Аромат має ванільно-пряні, дубові, цитрусові акценти. У смаку грушеві тони в компанії карамелі.',
  '/images/beverages/Wild-Turkey-Rye-07.webp'
 );
-
 
 ```
 
@@ -202,7 +206,7 @@ ORDER BY beverage_id ASC
 SELECT
   bd.beverage_id AS beverageId,
   bd.beverage_title AS title,
-  dc.drink_category AS category,
+  dc.category_name AS category,
   bd.beverage_volume AS volume,
   bd.beverage_in_wish AS inWish,
   bd.beverage_ratings AS ratings,
@@ -215,16 +219,19 @@ FROM
 JOIN
   countries co ON bd.country_id = co.country_id
 JOIN
-  drink_categories dc ON bd.category_id = dc.drink_id;
+  drink_categories dc ON bd.category_id = dc.category_id;
 
 ```
 
 #### price request in retail chains by drink ID
 ```sql
-SELECT rc.retail_chain_name AS chain, bp.price, bp.last_updated AS lastUpdated
-FROM beverage_prices bp
-JOIN retail_chains rc ON bp.retail_chain_id = rc.retail_chain_id
-WHERE bp.beverage_id = {your_beverage_id};
+SELECT
+  beverage_title, beverage_volume,
+  auchan_price, novus_price, silpo_price, atb_price, rozetka_price
+FROM
+  beverages_data
+WHERE
+  beverage_id = your_beverage_id;
 ```
 
 #### request for 
@@ -244,16 +251,6 @@ WHERE bp.beverage_id = {your_beverage_id};
 SELECT DISTINCT c.country_name
 FROM beverages_data bd
 JOIN countries c ON bd.country_id = c.country_id;
-```
-
-#### complex query with multiple conditions
-```sql
-SELECT beverage_title as Nazva, rc.retail_chain_name as Store, bp.price as "Ціна", bd.beverage_volume as "Міра"
-FROM beverages_data bd
-JOIN beverage_prices bp ON bd.beverage_id = bp.beverage_id
-JOIN retail_chains rc ON bp.retail_chain_id = rc.retail_chain_id
-WHERE bd.beverage_title like 'Wild%' AND bp.price > 0 and bp.price < 900
-ORDER BY bp.price ASC;
 ```
 
 ## Modifying Data
